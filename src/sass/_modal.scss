@@ -1,0 +1,150 @@
+li {
+  list-style: none;
+}
+
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  background-color: #ffffff;
+  padding: 20px 20px;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.modal__close-btn {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__close-icon {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  fill: black;
+  background-color: red;
+  width: 14px;
+  height: 14px;
+  z-index: 5;
+}
+
+.modal__movie-photo {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  width: 100%;
+}
+
+.modal__movie-title {
+  font-size: 20px;
+  line-height: 23px;
+  margin: 0;
+  text-transform: uppercase;
+  padding-top: 30.43px;
+  margin-bottom: 20px;
+}
+.modal__categories {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal__categories-left {
+  display: flex;
+  flex-direction: column;
+  padding-right: 20%;
+}
+
+.modal__categories-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__category-left-item {
+  font-size: 12px;
+  white-space: nowrap;
+  color: #8c8c8c;
+  line-height: 16px;
+}
+
+.modal__category-right-item {
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.modal__categories-left-list {
+  padding-left: 0;
+}
+
+.modal__category-left-item:not(:last-child),
+.modal__category-right-item:not(:last-child) {
+  padding-bottom: 10px;
+}
+
+.modal__about-header {
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 16px;
+}
+
+.modal__about {
+  font-size: 12px;
+  text-align: justify;
+  line-height: 20px;
+  margin-bottom: 21px;
+}
+
+.vote {
+  background: #ff6b01;
+  border-radius: 5px;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #ffffff;
+}
+.votes {
+  margin: 0;
+}
+
+.double {
+  white-space: nowrap;
+  display: flex;
+  margin: 0;
+}
+
+.modal__add-btn {
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  white-space: wrap;
+  width: 112.58px;
+height: 44px;
+cursor: pointer;
+}
+
+.watched {
+  border: none;
+  background-color: #ff6b01;
+  color: #ffffff;
+}
+
+.queue {
+    background-color: #FFFFFF;;
+}
+
+.modal__buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
