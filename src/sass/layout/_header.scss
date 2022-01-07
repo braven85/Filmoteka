@@ -1,3 +1,4 @@
+@import "./utils/variables";
 @media screen and (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
@@ -34,10 +35,10 @@
       }
       &__navigation-item--lastchild{
         margin-left: 30px;
-        border-bottom: 3px solid #FF6B08;
+        border-bottom: 3px solid $details-color;
       }
       &__navigation-link{
-      font-family: Roboto;
+      font-family: $main-font;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
@@ -45,7 +46,7 @@
       display: flex;
       text-align: center;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: $main-color;
       width: 100%;
       height: 14px;
       display: flex;
@@ -56,7 +57,7 @@
       list-style: none;
       }
       &__button{
-      font-family: Roboto;
+      font-family: $main-font;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
@@ -65,12 +66,12 @@
       align-items: center;
       text-align: center;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: $main-color;
       padding: 14px 36px 12px 36px;
       max-width: 129.53px;
       height: 44px;
       background: transparent;
-      border: 1px solid #FFFFFF;
+      border: 1px solid $main-color;
       box-sizing: border-box;
       border-radius: 5px;
       margin-top: 49px;
@@ -96,14 +97,14 @@
       padding-right: 70px;
   
     &__name{
-    font-family: Roboto;
+    font-family: $main-font;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
     align-items: center;
     text-align: center;
-    color: #FFFFFF;
+    color: $main-color;
     margin-right: 30px;
     }
     &__button--first-child{
