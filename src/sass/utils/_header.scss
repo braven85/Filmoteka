@@ -5,8 +5,6 @@
     background-repeat:no-repeat;
     background-size:cover;
     min-height:230px;
-    max-width: 480px;
-    position: relative;
 }
 
 body {
@@ -17,6 +15,7 @@ body {
 .header {
     padding: 0;
     margin: 0;
+    position: relative;
     &__title {
         margin: 0;
         display: none;
@@ -72,7 +71,7 @@ body {
         border:none;
         border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
         color: $main-color;
-        min-width: 280px;
+        width: 100%;
         display: block;
         font-family: $main-font;
         font-style: normal;
@@ -91,7 +90,7 @@ body {
             width: 12px;
             height: 12px;
             position: absolute;
-            left: 265px;
+            right: 5px;
             top: 3px;
             cursor: pointer;
         }
@@ -108,7 +107,7 @@ body {
 
     &__search {
         position: relative;
-        width: 280px;
+        max-width: 280px;
         margin-right: auto;
         margin-left: auto;
         margin-top: 40px;
@@ -118,7 +117,6 @@ body {
 @media screen and (min-width: 768px) and (max-width:1023px){
     .container-header {
         background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/header-background_t.png");
-        max-width: 768px;
     }
     .header {
         &__title {
@@ -166,7 +164,6 @@ body {
 @media screen and (min-width: 1024px) {
     .container-header {
         background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/header-background_d.png");
-        max-width: 1024px;
     }
 
     .header {
