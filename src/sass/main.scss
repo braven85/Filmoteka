@@ -5,9 +5,11 @@
 
 // Style dla pliku z przykładem HTML fragmentu
 //@import './example';
+@import './utils/is-hidden';
+@import './utils/variables';
+
 
 @import './modal';
 @import './backdrop';
-@import './utils/is-hidden';
 
-@import './utils/variables';
+

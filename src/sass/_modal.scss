@@ -6,9 +6,9 @@ li {
   position: relative;
   width: 100%;
   max-width: 450px;
-  background-color: #ffffff;
+  background-color: $main-color;
   padding: 20px 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: $main-font;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   max-height: calc(100vh - 40px);
@@ -27,7 +27,7 @@ li {
 .modal__close-btn {
   border: none;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: $main-color;
 }
 
 .modal__movie-photo {
@@ -44,8 +44,8 @@ li {
   margin: 0;
   text-transform: uppercase;
   padding-top: 30.43px;
-  margin-bottom: 20px;
 }
+
 .modal__categories {
   display: flex;
   flex-direction: row;
@@ -65,7 +65,7 @@ li {
 .modal__category-left-item {
   font-size: 12px;
   white-space: nowrap;
-  color: #8c8c8c;
+  color: $modal-categories;
   line-height: 16px;
 }
 
@@ -103,10 +103,20 @@ li {
   margin: 0;
   padding-left: 10px;
   padding-right: 10px;
-  color: #ffffff;
+  color: $main-color;
 }
+.slash{
+margin: 0;
+padding-left: 3px;
+padding-right: 3px;
+}
+
 .votes {
   margin: 0;
+  border-radius: 5px;
+  background-color: #F7F7F7;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .double {
@@ -131,11 +141,11 @@ li {
 .watched {
   border: none;
   background-color: #ff6b01;
-  color: #ffffff;
+  color: $main-color;
 }
 
 .queue {
-  background-color: #ffffff;
+  background-color: $main-color;
 }
 
 .modal__buttons {
@@ -156,6 +166,7 @@ li {
     display: flex;
     padding: 30px 30px;
   }
+  
 
   .modal__movie-photo {
     min-width: 264px;
@@ -191,9 +202,6 @@ li {
     margin-bottom: 20.2px;
   }
 
-  .modal__movie-title{
-    margin-bottom: 0;
-  }
 
   .modal__categories {
     justify-content: flex-start;
