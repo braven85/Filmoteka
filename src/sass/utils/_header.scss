@@ -86,8 +86,6 @@ body {
 
     }
     &__icon {
-        
-        cursor: pointer;
 
         &--search {
             width: 12px;
@@ -95,6 +93,7 @@ body {
             position: absolute;
             left: 265px;
             top: 3px;
+            cursor: pointer;
         }
 
         &--film {
@@ -103,6 +102,7 @@ body {
             width: 24px;
             top: 55px;
             left: 21px;
+            cursor: pointer;
         }
     }
 
@@ -151,9 +151,6 @@ body {
             margin-top: 50px;
         }
         &__icon {
-        
-            cursor: pointer;
-
             &--search {
                 left: 321px;
             }
@@ -192,13 +189,11 @@ body {
         &__icon {
             &--search {
                 left: 321px;
-                cursor: pointer;
             }
 
             &--film {
                 left: 71px;
                 top: 61px;
-                cursor: pointer;
             }
         }
         &__list {
