@@ -20,8 +20,8 @@ li {
   width: 14px;
   height: 14px;
   position: absolute;
-  right: 18px;
-  top: 18px;
+  right: 11px;
+  top: 10px;
 }
 
 .modal__close-btn {
@@ -36,6 +36,7 @@ li {
   padding-top: 23px;
   width: 100%;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 .modal__movie-title {
@@ -172,6 +173,7 @@ padding-right: 3px;
     min-width: 264px;
     max-height: 373.55px;
     padding-right: 32px;
+    margin-top: 0;
   }
 
   .modal__categories {
@@ -200,6 +202,7 @@ padding-right: 3px;
     max-height: 477.8px;
     padding-right: 30px;
     margin-bottom: 20.2px;
+    margin-top: 0;
   }
 
 
