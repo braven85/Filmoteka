@@ -1,7 +1,7 @@
 .container-header {
     margin-top: 0;
     padding: 0;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/header-background_m.png");
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../images/header-background_m.png");
     background-repeat:no-repeat;
     background-size:cover;
     min-height:230px;
@@ -32,7 +32,7 @@ body {
         &__item {
             margin-right: 20px;
             margin-top: 58px;
-        
+
             &:not(:last-child) {
                 margin-right: 39px;
                 position: relative;
@@ -46,7 +46,7 @@ body {
                     height: 0;
                     left: 0;
                     top: 15px;
-                    
+
                 }
             }
         }
@@ -78,7 +78,7 @@ body {
         font-weight: normal;
         font-size: 14px;
         line-height: 16px;
-        &::placeholder { 
+        &::placeholder {
             color: $main-color;
             opacity: 1;
         }
@@ -116,7 +116,7 @@ body {
 
 @media screen and (min-width: 768px) and (max-width:1023px){
     .container-header {
-        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/header-background_t.png");
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/header-background_t.png);
     }
     .header {
         &__title {
@@ -142,7 +142,7 @@ body {
         }
         &__input {
             width: 336px;
-            
+
         }
 
         &__search {
@@ -163,7 +163,7 @@ body {
 }
 @media screen and (min-width: 1024px) {
     .container-header {
-        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/header-background_d.png");
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/header-background_d.png);
     }
 
     .header {
@@ -199,7 +199,7 @@ body {
             }
         }
         &__input {
-            width: 336px; 
+            width: 336px;
         }
         &__search {
             margin-top: 50px;
