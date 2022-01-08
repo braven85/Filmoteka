@@ -5,8 +5,10 @@
     background-repeat:no-repeat;
     background-size:cover;
     min-height:230px;
-    min-width: 320px;
+    max-width: 480px;
+    position: relative;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -40,7 +42,7 @@ body {
                     margin: 0;
                     content: '';
                     position: absolute;
-                    border: 1px solid #FF6B08;
+                    border: 1px solid $details-color;
                     width: 100%;
                     height: 0;
                     left: 0;
@@ -52,15 +54,15 @@ body {
     }
     &__link {
         text-decoration: none;
-        color: #FFFFFF;
+        color: $main-color;
         line-height: 14px;
         display: flex;
         align-items: center;
         text-align: center;
-        color: white;
+        color: $main-color;
         cursor: pointer;
         text-transform: uppercase;
-        // font-family: Roboto;
+        font-family: $main-font;
         font-style: normal;
         font-weight: 500;
         font-size: 12px;
@@ -69,16 +71,16 @@ body {
         background: transparent;
         border:none;
         border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
-        color: #FFFFFF;
+        color: $main-color;
         min-width: 280px;
         display: block;
-        //font-family: Roboto;
+        font-family: $main-font;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
         line-height: 16px;
         &::placeholder { 
-            color: #FFFFFF;
+            color: $main-color;
             opacity: 1;
         }
 
@@ -116,14 +118,14 @@ body {
 @media screen and (min-width: 768px) and (max-width:1023px){
     .container-header {
         background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/header-background_t.png");
-        min-width: 768px;
+        max-width: 768px;
     }
     .header {
         &__title {
-            color: #FFFFFF;
+            color: $main-color;
             display: flex;
             width: 141px;
-            //font-family: Roboto;
+            font-family: $main-font;
             font-style: normal;
             font-weight: 500;
             font-size: 30px;
@@ -167,25 +169,48 @@ body {
 @media screen and (min-width: 1024px) {
     .container-header {
         background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/images/header-background_d.png");
-        min-width: 1024px;
+        max-width: 1024px;
     }
 
     .header {
         &__title {
-                color: #FFFFFF;
-                display: flex;
-                width: 141px;
-                //font-family: Roboto;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 30px;
-                line-height: 35px;
-                display: flex;
-                align-items: center;
-                text-align: center;
-                position: absolute;
-                left: 105px;
-                top: 55px;
+            color: $main-color;
+            display: flex;
+            width: 141px;
+            font-family: $main-font;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 35px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            left: 105px;
+            top: 55px;
+        }
+        &__icon {
+            &--search {
+                left: 321px;
+                cursor: pointer;
+            }
+
+            &--film {
+                left: 71px;
+                top: 61px;
+                cursor: pointer;
+            }
+        }
+        &__list {
+            &__item {
+                margin-right: 76px;
+            }
+        }
+        &__input {
+            width: 336px; 
+        }
+        &__search {
+            margin-top: 50px;
         }
     }
 
