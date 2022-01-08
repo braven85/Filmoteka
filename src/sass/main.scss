@@ -1,4 +1,8 @@
+@import './base/common';
+
 @import './utils/variables';
-@import "./components/container";
-@import "./components/common";
-@import "./layout/library";
+@import './utils/header';
+@import './utils/container';
+
+@import './layouts/library';
+@import './layouts/footer';
