@@ -19,6 +19,7 @@ body {
     &__title {
         margin: 0;
         display: none;
+        text-decoration: none;
     }
     &__list {
         margin: 0;
@@ -111,6 +112,20 @@ body {
         margin-right: auto;
         margin-left: auto;
         margin-top: 40px;
+    }
+
+    &__error {
+        margin-top: 22px;
+        display: none;
+        font-family: $main-font;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        align-items: center;
+        text-align: center;
+
+        color: #FF001B;
     }
 }
 

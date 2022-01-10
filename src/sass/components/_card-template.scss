@@ -4,12 +4,18 @@
     height: 443px;
     border-radius: 5px;
     display: block;
+    margin-bottom: 20px;
   }
 
   &-picture {
   width: 280px;
-  height: 402px;
+  height: 398px;
   border-radius: 5px;
+  }
+
+  &-img {
+    width: 280px;
+    height: 398px;
   }
 
   &-description {
@@ -18,7 +24,7 @@
   font-size: 12px;
   line-height: 14px;
   width: 100%;
-  height: 443px - 402px;
+  height: 443px - 398px;
   display: block;
   }
 
@@ -40,6 +46,7 @@
     &-card {
       width: 239px;
       height: 439px;
+      margin: 0;
     }
 
     &-picture {
@@ -47,8 +54,13 @@
       height: 398px;
     }
 
+    &-img {
+      width: 293px;
+      height: 398px;
+    }
+
     &-description {
-      height: 439px - 398px;
+      height: 45px;
     }
   }
 
@@ -63,6 +75,11 @@
 
     &-picture {
       width: 274px;
+    }
+
+    &-img {
+      width: 274px;
+      height: 398px;
     }
   }
 

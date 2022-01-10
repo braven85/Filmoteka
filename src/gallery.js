@@ -1,13 +1,16 @@
 const axios = require('axios').default;
 const gallery = document.querySelector('.gallery');
+const search = document.querySelector('.header__icon--search')
+const text = document.querySelector('.header__input');
+const noResults = document.querySelector('.header__error');
+
 let IDS;
 
-async function fetchImages() {
+async function fetchImages(page) {
     try {
       IDS = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&language=en-US`)
-    const res = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=130c7a7ecd86dbb286ae26c3cdcca88c`);
-      console.log(res.data);
-      buildTrending(res.data.results)
+    const res = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&page=${page}`);
+      building(res.data.results)
     return res.data;
   }
   catch (error) {
@@ -15,10 +18,27 @@ async function fetchImages() {
   }
 }
 
-let trendingMovies = fetchImages();
+fetchImages(1);
 
-function buildTrending(resp) {
-    console.log(IDS.data.genres);
+async function fetchMovies(name) {
+    try {
+    const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&query=${name}`);
+        console.log(res.data.results.length);
+        if (res.data.results.length === 0)
+        {
+            return noResults.style.display = "flex";
+        }
+        gallery.innerHTML = '';
+        building(res.data.results)
+    return res.data;
+  }
+  catch (error) {
+        return noResults.style.display = "flex";
+  }
+}
+
+
+function building(resp) {
     const markup = resp.map(variable => {
         let genreName = "";
         let movieName = "";
@@ -45,7 +65,7 @@ function buildTrending(resp) {
         }
             return `<div class="movie-card">
   <div class="movie-picture">
-    <img src="${variable.poster_path}" alt="Greyhound poster">
+    <img class="movie-img" src="http://image.tmdb.org/t/p/w500/${variable.poster_path}" alt="${movieName} poster">
   </div>
   <div class="movie-description">
     <div class="movie-title">
@@ -61,4 +81,9 @@ function buildTrending(resp) {
         gallery.innerHTML += markup;
 }
 
-console.log(trendingMovies);
+
+
+search.addEventListener("click", function () {
+    noResults.style.display = "none";
+    fetchMovies(text.value);
+})
