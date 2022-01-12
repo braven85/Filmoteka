@@ -23,7 +23,6 @@ fetchImages(1);
 async function fetchMovies(name) {
     try {
     const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&query=${name}`);
-        console.log(res.data.results.length);
         if (res.data.results.length === 0)
         {
             return noResults.style.display = "flex";
@@ -49,7 +48,6 @@ function building(resp) {
             if (variable.genre_ids.includes(currentID))
             {
                 genreName += Object.values(element)[1] +", "
-                console.log(genreName);
             }
         });
         genreName = genreName.slice(0, genreName.length - 2);
@@ -90,7 +88,6 @@ search.addEventListener("click", function () {
 
 text.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
-    console.log("hello");
     event.preventDefault();
     noResults.style.display = "none";
     fetchMovies(text.value);
