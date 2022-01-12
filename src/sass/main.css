@@ -35,6 +35,7 @@ body {
 .header__title {
   margin: 0;
   display: none;
+  text-decoration: none;
 }
 
 .header__list {
@@ -153,6 +154,21 @@ body {
   margin-top: 40px;
 }
 
+.header__error {
+  margin-top: 22px;
+  display: none;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: #FF001B;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .container-header {
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(../images/header-background_t.png);
@@ -259,6 +275,34 @@ body {
 @media screen and (min-width: 1024px) {
   .container {
     max-width: 1024px;
+  }
+}
+
+.gallery {
+  margin: 20px auto 40px auto;
+  max-width: 280px;
+  grid-row-gap: 30px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .gallery {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
+    margin: 50px auto 60px auto;
+    max-width: 616px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .gallery {
+    display: -ms-grid;
+    display: grid;
+    margin: 60px auto 50px auto;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+    max-width: 882px;
   }
 }
 
@@ -535,12 +579,18 @@ body {
   height: 443px;
   border-radius: 5px;
   display: block;
+  margin-bottom: 20px;
 }
 
 .movie-picture {
   width: 280px;
-  height: 402px;
+  height: 398px;
   border-radius: 5px;
+}
+
+.movie-img {
+  width: 280px;
+  height: 398px;
 }
 
 .movie-description {
@@ -549,7 +599,7 @@ body {
   font-size: 12px;
   line-height: 14px;
   width: 100%;
-  height: 41px;
+  height: 45px;
   display: block;
 }
 
@@ -566,13 +616,18 @@ body {
   .movie-card {
     width: 239px;
     height: 439px;
+    margin: 0;
   }
   .movie-picture {
     width: 293px;
     height: 398px;
   }
+  .movie-img {
+    width: 293px;
+    height: 398px;
+  }
   .movie-description {
-    height: 41px;
+    height: 45px;
   }
 }
 
@@ -582,6 +637,10 @@ body {
   }
   .movie-picture {
     width: 274px;
+  }
+  .movie-img {
+    width: 274px;
+    height: 398px;
   }
 }
 /*# sourceMappingURL=main.css.map */
