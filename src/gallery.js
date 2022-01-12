@@ -63,7 +63,7 @@ function building(resp) {
             movieName = variable.name;
             movieDate = variable.first_air_date.slice(0, 4);
         }
-            return `<div class="movie-card">
+            return `<div class="movie-card" data-id="${variable.id}">
   <div class="movie-picture">
     <img class="movie-img" src="http://image.tmdb.org/t/p/w500/${variable.poster_path}" alt="${movieName} poster">
   </div>
@@ -87,3 +87,12 @@ search.addEventListener("click", function () {
     noResults.style.display = "none";
     fetchMovies(text.value);
 })
+
+text.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    console.log("hello");
+    event.preventDefault();
+    noResults.style.display = "none";
+    fetchMovies(text.value);
+  }
+});
