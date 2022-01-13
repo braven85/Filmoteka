@@ -1,11 +1,12 @@
 @import './base/common';
 
 @import './utils/variables';
-@import './layouts/header';
 @import './utils/container';
-@import './utils/gallery';
 
+@import './layouts/header';
 @import './layouts/library';
+@import './layouts/gallery';
+@import './layouts/pagination';
 @import './layouts/footer';
 
 @import './components/card-template';
