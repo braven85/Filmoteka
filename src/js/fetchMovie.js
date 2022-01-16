@@ -4,12 +4,20 @@ const api = {
 };
 
 const fetchMovieData = async () => {
+const movieCard = document.querySelector('.movie-card');
+
+  let movieID = movieCard.getAttribute('data-id');
+  
+  console.log(movieCard)
+
   const response = await fetch(
-    `${api.baseUrl}/3/movie/157336?api_key=${api.apiKey}&language=en-US`,
+    `${api.baseUrl}/3/movie/${movieID}?api_key=${api.apiKey}&language=en-US`,
   );
   const jsonData = await response.json();
-  // console.log(jsonData);
+    console.log(jsonData);
   return jsonData;
 };
+
+fetchMovieData();
 
 export { fetchMovieData };
