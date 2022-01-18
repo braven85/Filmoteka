@@ -77,17 +77,26 @@ function addToWatched() {
   watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
   if (watchedMovie == null) watchedMovie = [];
 
+  let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
   let newMovie = { movieTitle: movieData.title, ID: movieData.id };
 
-  for (let i = 0; i < watchedMovie.length; i++) {
-    if (watchedMovie[i].ID === newMovie.ID) {
-      console.log('nope');
-    } else {
-      watchedMovie.push(newMovie);
-      localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+  for (let movie of watchedMovie) {
+    if (movie.ID === newMovie.ID) {
+      newMovie = '';
+      break;
     }
   }
+
+  if (newMovie === '') {
+    console.log(`Film "${movieTitleForConsole.movieTitle}" jest już w bazie`);
+  } else {
+    watchedMovie.push(newMovie);
+    localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+    console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do obejrzanych`);
+  }
 }
+  
+
   
 function addToQueue() {
   let queue;
@@ -95,10 +104,23 @@ function addToQueue() {
   queue = JSON.parse(localStorage.getItem('queue'));
   if (queue == null) queue = [];
 
+  let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
   let newMovie = { movieTitle: movieData.title, ID: movieData.id };
 
-  queue.push(newMovie);
-  localStorage.setItem('queue', JSON.stringify(queue));
+  for (let movie of queue) {
+    if (movie.ID === newMovie.ID) {
+      newMovie = '';
+      break;
+    }
+  }
+
+  if (newMovie === '') {
+    console.log(`Film "${movieTitleForConsole.movieTitle}" jest już w kolejce`);
+  } else {
+    queue.push(newMovie);
+    localStorage.setItem('queue', JSON.stringify(queue));
+    console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do kolejki`);
+  }
 }
 
 watchedBtn.addEventListener('click', addToWatched);
