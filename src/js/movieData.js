@@ -79,10 +79,16 @@ function addToWatched() {
 
   let newMovie = { movieTitle: movieData.title, ID: movieData.id };
 
-  watchedMovie.push(newMovie);
-  localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+  for (let i = 0; i < watchedMovie.length; i++) {
+    if (watchedMovie[i].ID === newMovie.ID) {
+      console.log('nope');
+    } else {
+      watchedMovie.push(newMovie);
+      localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+    }
+  }
 }
-
+  
 function addToQueue() {
   let queue;
 
