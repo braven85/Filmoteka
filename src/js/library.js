@@ -5,7 +5,6 @@ const buttonWatched = document.querySelector('#btn-watched');
 const buttonQueue = document.querySelector('#btn-queue');
 const info = document.querySelector('.start-info');
 const div = document.querySelector('.start');
-const paragraph = document.createElement('p');
 const list = document.createElement('ul');
 list.classList.add('lib-gallery__list');
 
@@ -43,11 +42,12 @@ let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
 function getWatched() {
   if (watchedMovie !== null) {
     for (let movie of watchedMovie) {
-      // console.log(movie.ID);
       info.remove();
       list.innerHTML = '';
       renderLibMovies(movie.ID);
     }
+    buttonWatched.removeEventListener('click', getWatched);
+    buttonQueue.addEventListener('click', getQueque)
   }
   div.append(list);
 }
@@ -57,11 +57,12 @@ let queue = JSON.parse(localStorage.getItem('queue'));
 function getQueque() {
   if (queue !== null) {
     for (let movie of queue) {
-      // console.log(movie.ID);
       info.remove();
-      paragraph.innerHTML;
+      list.innerHTML ='';
       renderLibMovies(movie.ID);
     }
+    buttonQueue.removeEventListener('click', getQueque);
+    buttonWatched.addEventListener('click', getWatched);
   }
   div.append(list);
 }
