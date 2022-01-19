@@ -14,7 +14,7 @@
     color: #fff;
   }
 
-  &_hiding-box,
+  &_hider,
   &_first-page,
   &_last-page{
     display: none;
@@ -27,9 +27,9 @@
       }
 }
 
-@media screen and (min-width: 481px){
+@media screen and (min-width: 768px){
   .pagination{
-    &_hiding-box,
+    &_hider,
     &_first-page,
     &_last-page{
       display: inline-block;
