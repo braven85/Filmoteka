@@ -12,55 +12,6 @@ button {
   padding: 0;
 }
 
-li {
-  list-style: none;
-}
-
-.box {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-}
-
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-
-@media screen and (min-width: 480px) {
-  .container {
-    max-width: 480px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-.gallery {
-  margin: 20px auto 40px auto;
-  max-width: 280px;
-  grid-row-gap: 30px;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .gallery {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
-    margin: 50px auto 60px auto;
-    max-width: 616px;
-  }
-}
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .is-hidden {
     opacity: 0;
@@ -85,6 +36,9 @@ li {
   }
 }
 
+li {
+  list-style: none;
+}
 
 .modal {
   position: relative;
@@ -285,7 +239,7 @@ li {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    min-width: 618px;
+    min-width: 750px;
     max-height: 562px;
     overflow-y: unset;
     display: -webkit-box;
@@ -319,14 +273,6 @@ li {
 }
 
 @media screen and (min-width: 1024px) {
-  .gallery {
-    display: -ms-grid;
-    display: grid;
-    margin: 60px auto 50px auto;
-    -ms-grid-columns: auto auto auto;
-        grid-template-columns: auto auto auto;
-    max-width: 882px;
-  }
   .modal {
     position: absolute;
     top: 50%;
@@ -400,6 +346,57 @@ li {
   width: 100%;
   min-height: 100%;
   z-index: 10;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+.gallery {
+  margin: 20px auto 40px auto;
+  max-width: 280px;
+  grid-row-gap: 30px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .gallery {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
+    margin: 50px auto 60px auto;
+    max-width: 616px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .gallery {
+    display: -ms-grid;
+    display: grid;
+    margin: 60px auto 50px auto;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+    max-width: 882px;
+  }
 }
 
 .container-header {
@@ -831,6 +828,22 @@ body {
   }
 }
 
+.box {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0px;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.333;
+}
+
+.box:hover {
+  cursor: pointer;
+}
+
 .pagination {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -838,6 +851,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 40px;
 }
 
 .pagination_buttons {
@@ -847,7 +861,51 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 374px;
+}
+
+.pagination_current-page {
+  border-radius: 5px;
+  background-color: #ff6b08;
+  color: #fff;
+}
+
+.pagination_current-page:hover {
+  cursor: initial;
+}
+
+.pagination_hider, .pagination_first-page, .pagination_last-page {
+  display: none;
+}
+
+.pagination_right, .pagination_left {
+  background: #F7F7F7;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination {
+    margin-bottom: 60px;
+  }
+  .pagination_hider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .pagination_hider:hover {
+    cursor: initial;
+  }
+  .pagination_dots {
+    margin-top: 8px;
+  }
+  .pagination_first-page, .pagination_last-page {
+    display: inline-block;
+  }
 }
 
 .footer {
