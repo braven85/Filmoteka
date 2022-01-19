@@ -86,7 +86,7 @@ function addToWatched() {
       break;
     }
   }
-
+  console.log(watchedMovie)
   if (newMovie === '') {
     console.log(`Film "${movieTitleForConsole.movieTitle}" jest już w bazie`);
   } else {
@@ -124,4 +124,7 @@ function addToQueue() {
 }
 
 watchedBtn.addEventListener('click', addToWatched);
+
 queueBtn.addEventListener('click', addToQueue);
+
+export { addToWatched, addToQueue, renderMovie };
