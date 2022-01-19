@@ -4,6 +4,10 @@
     "sources": [
         "main.scss",
         "base/_common.scss",
+        "utils/_is-hidden.scss",
+        "utils/_variables.scss",
+        "_modal.scss",
+        "_backdrop.scss",
         "utils/_variables.scss",
         "utils/_container.scss",
         "utils/_gallery.scss",

@@ -1,5 +1,15 @@
 @import './base/common';
 
+// Style dla pliku z przykładem HTML fragmentu
+//@import './example';
+@import './utils/is-hidden';
+@import './utils/variables';
+
+
+@import './modal';
+@import './backdrop';
+
+
 @import './utils/variables';
 @import './utils/container';
 @import './utils/gallery';
