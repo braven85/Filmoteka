@@ -18,27 +18,18 @@ body {
       min-height: 230px;
       background-repeat: no-repeat;
       background-size: cover;
-      margin-top: 0;
-      padding: 0;
-      padding-right: 20px;
-      padding-left: 21px;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       &__name{
         color: transparent;
         display: inline-block;
       }
-      // &__navigation{
-      //   display: inline-block;
-      //   justify-content: center;
-      // }
       &__navigation-list{
         list-style: none;
         align-items: center;
         display: flex;
         justify-content: center;
-      }
-      &____navigation-item{
-        margin-top: 46px;
       }
       &__navigation-item--lastchild{
         margin-left: 30px;
@@ -56,7 +47,6 @@ body {
       color: $main-color;
       width: 100%;
       height: 14px;
-      // display: flex;
       text-decoration: none;
       }
       &__button-list{
@@ -93,43 +83,8 @@ body {
         border: transparent;
       }
       }
-      // &__button--last-child{
-      //   margin-left: 30px;
-      // }
   }
 
-// @media screen and (min-width: 480px){
-//   .library{
-//     background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
-//       url(../images/header_lib_tablet.png);
-//       height: 230px;
-//       padding-left: 71px;
-//       padding-right: 70px;
-  
-//     &__name{
-//     font-family: $main-font;
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 30px;
-//     line-height: 35px;
-//     align-items: center;
-//     text-align: center;
-//     color: $main-color;
-//     margin-right: 30px;
-//     }
-//     &__button--first-child{
-//       margin-left: 35px;
-//     }
-//   }
-// }
-// @media (min-device-pixel-ratio: 2),
-//       (min-resolution: 192dpi),
-//       (min-resolution: 2dppx) {
-//         .library {
-//     background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
-//       url(../images/header_lib_tablet@2x.png);
-//     }
-//   }
 
 @media screen and (min-width: 768px){
   .library{
@@ -154,12 +109,6 @@ body {
   height: 44px;
   padding: 14px 38px 12px 38px; 
   }
-  // .library__button--first-child{
-  //   margin-left: 170px;
-  // }
-  // .library__button--last-child{
-  //   margin-left: 15px;
-  // }
   }
 }
   @media (min-device-pixel-ratio: 2),
@@ -180,9 +129,6 @@ body {
   &__name{
     margin-right: 564px
   }
-  // &__button--first-child{
-  //   margin-left: 298px;
-  // }
 }
 }
 @media (min-device-pixel-ratio: 2),
@@ -194,7 +140,7 @@ body {
     }
   }
 
- //////////////////////////////////////////////
+ // styles library.js
   .start-info{
     text-align: center;
     color: #ff001b;
@@ -229,20 +175,12 @@ body {
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    // width: 100%;
     color: $details-color;
 }
 .lib-gallery__title{
     text-transform: uppercase;
     color: #000000;
 }
-
-// @media screen and (min-width: 480px){
-//   .lib-gallery__list{
-//     justify-content: center;
-//     gap: 30px;
-//   }
-// }
 
 @media screen and (min-width: 768px){
   .lib-gallery__list{
