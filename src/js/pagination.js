@@ -102,13 +102,13 @@ const conditionalHide = (e) => {
     pagePlusTwo.disabled = false;
   }
 };
+conditionalHide();
 const pagesCorection = (e) => {
   pageMinusTwo.textContent = Number(current.textContent) - 2;
   pageMinusOne.textContent = Number(current.textContent) - 1;
   pagePlusOne.textContent = Number(current.textContent) + 1;
   pagePlusTwo.textContent = Number(current.textContent) + 2;
 };
-conditionalHide();
 const changeCurrentPage = (e) => {
   e.preventDefault();
   current.textContent = e.currentTarget.textContent;
