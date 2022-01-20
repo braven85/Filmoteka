@@ -1066,18 +1066,51 @@ body.students-active {
 }
 
 #students-container .students-background .students {
-  background: white;
-  padding: 50px;
-  display: inline-block;
+  max-width: 300px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffa876), to(#ff5100));
+  background: linear-gradient(#ffa876, #ff5100);
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   border-radius: 3px;
   font-weight: 300;
   position: relative;
 }
 
 #students-container .students-background .students h2 {
-  font-size: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  letter-spacing: 0.1em;
+  height: 80px;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
   line-height: 25px;
   margin-bottom: 15px;
+  color: #ffffff;
+}
+
+#students-container .students-background .students-picture {
+  border: 2px solid black;
+  border-radius: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+#students-container .students-background .students-name {
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: #43005e;
 }
 
 @-webkit-keyframes unfoldIn {
@@ -1181,6 +1214,160 @@ body.students-active {
   100% {
     -webkit-transform: scale(0);
             transform: scale(0);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #students-container .students-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+  }
+  #students-container .students-background .students {
+    max-width: 740px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffa876), to(#ff5100));
+    background: linear-gradient(#ffa876, #ff5100);
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+  }
+  #students-container .students-background .students h2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    letter-spacing: 0.3em;
+    height: 100px;
+    font-size: 50px;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+  #students-container .students-background .students-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  #students-container .students-background .students-list__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #students-container .students-background .students-picture {
+    border: 2px solid black;
+    border-radius: 25px;
+    width: 140px;
+    height: 140px;
+  }
+  #students-container .students-background .students-name {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 36px;
+    color: #43005e;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #students-container .students-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+  }
+  #students-container .students-background .students {
+    max-width: 900px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffa876), to(#ff5100));
+    background: linear-gradient(#ffa876, #ff5100);
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+  }
+  #students-container .students-background .students h2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100px;
+    font-size: 70px;
+    letter-spacing: 0.3em;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+  #students-container .students-background .students-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  #students-container .students-background .students-list__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #students-container .students-background .students-picture {
+    border: 2px solid black;
+    border-radius: 25px;
+    width: 170px;
+    height: 170px;
+  }
+  #students-container .students-background .students-name {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 36px;
+    color: #43005e;
   }
 }
 /*# sourceMappingURL=main.css.map */
