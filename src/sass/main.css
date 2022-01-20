@@ -1117,15 +1117,17 @@ body.students-active {
 
 #students-container .students-background .students {
   max-width: 300px;
+  max-height: 95%;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffa876), to(#ff5100));
   background: linear-gradient(#ffa876, #ff5100);
   padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   display: block;
   border-radius: 3px;
   font-weight: 300;
   position: relative;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 #students-container .students-background .students h2 {
@@ -1145,13 +1147,16 @@ body.students-active {
   line-height: 25px;
   margin-bottom: 15px;
   color: #ffffff;
+  text-shadow: 2px 2px 4px black;
 }
 
 #students-container .students-background .students-picture {
   border: 2px solid black;
   border-radius: 25px;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 #students-container .students-background .students-name {
@@ -1161,6 +1166,7 @@ body.students-active {
   font-size: 20px;
   line-height: 24px;
   color: #43005e;
+  text-shadow: 1px 1px 2px white;
 }
 
 @-webkit-keyframes unfoldIn {
