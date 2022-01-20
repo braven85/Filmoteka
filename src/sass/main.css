@@ -659,15 +659,24 @@ body {
 .library {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_lib_mobile.png);
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_lib_mobile.png);
-  height: 230px;
+  min-height: 230px;
   background-repeat: no-repeat;
   background-size: cover;
   padding-right: 20px;
   padding-left: 21px;
 }
 
+.library__div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .library__icon {
-  margin-top: 46px;
+  margin-top: 56px;
 }
 
 .library__name {
@@ -677,9 +686,8 @@ body {
 
 .library__navigation {
   display: inline-block;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  margin-top: 58px;
+  height: 14px;
 }
 
 .library__navigation-list {
@@ -690,10 +698,11 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 30px;
 }
 
 .library__navigation-item--lastchild {
-  margin-left: 30px;
+  margin-right: auto;
   border-bottom: 3px solid #ff6b08;
 }
 
@@ -719,6 +728,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
   list-style: none;
 }
 
@@ -745,7 +758,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 5px;
-  margin-top: 49px;
+  margin-top: 39px;
 }
 
 .library__button:hover, .library__button:focus {
@@ -754,17 +767,14 @@ body {
   border: transparent;
 }
 
-.library__button--last-child {
-  margin-left: 30px;
-}
-
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
   .library {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_lib_tablet.png);
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_lib_tablet.png);
     height: 230px;
     padding-left: 71px;
     padding-right: 70px;
+    max-width: 100%;
   }
   .library__name {
     font-family: "Roboto", sans-serif;
@@ -777,10 +787,14 @@ body {
             align-items: center;
     text-align: center;
     color: #ffffff;
-    margin-right: 30px;
   }
-  .library__button--first-child {
-    margin-left: 35px;
+  .library__navigation-list {
+    gap: 39px;
+  }
+  .library__button {
+    max-width: 136px;
+    height: 44px;
+    padding: 14px 38px 12px 38px;
   }
 }
 
@@ -791,38 +805,14 @@ body {
   }
 }
 
-@media screen and (min-width: 768px) {
-  .library__name {
-    margin-right: 304px;
-  }
-  .library__navigation-item--lastchild {
-    margin-left: 39px;
-  }
-  .library__button {
-    max-width: 136px;
-    height: 44px;
-    padding: 14px 38px 12px 38px;
-  }
-  .library__button--first-child {
-    margin-left: 170px;
-  }
-  .library__button--last-child {
-    margin-left: 15px;
-  }
-}
-
 @media screen and (min-width: 1024px) {
   .library {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_lib_desktop.png);
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_lib_desktop.png);
     padding-left: 71px;
     padding-right: 71px;
-  }
-  .library__name {
-    margin-right: 564px;
-  }
-  .library__button--first-child {
-    margin-left: 298px;
+    max-width: 100%;
+    min-height: 100%;
   }
 }
 
@@ -851,12 +841,14 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   list-style: none;
-  padding-left: 20px;
-  padding-right: 20px;
   padding-bottom: 40px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 30px;
 }
 
 .lib-gallery__image {
@@ -880,18 +872,9 @@ body {
   color: #000000;
 }
 
-@media screen and (min-width: 480px) {
-  .lib-gallery__list {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    gap: 30px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .lib-gallery__list {
-    padding: 40px 75px 50px 75px;
+    padding-top: 40px 75px 50px 75px;
   }
   .lib-gallery__image {
     width: 294px;
@@ -901,7 +884,8 @@ body {
 
 @media screen and (min-width: 1024px) {
   .lib-gallery__list {
-    padding: 40px 71px 46px 71px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   .lib-gallery__image {
     width: 274px;
