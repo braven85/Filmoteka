@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F7F7F7;;
+  background-color: $footer-bg;
 
   &_info {
     text-align: center;
@@ -42,29 +42,6 @@
     }
   }
 
-
-@media screen and (min-width: 768px){
-  .footer{
-    height: 77px;
-
-    &_info {
-      display: flex;
-    }
-
-    &_style{
-      margin-top: 0;
-      margin-left: 4px;
-    }
-
-    &_first,
-    &_second,
-    &_third,
-    &_link{
-    font-size: 16px;
-    line-height: 1.188;
-    }
-  }
-}
 
 @media screen and (min-width: 768px){
   .footer{

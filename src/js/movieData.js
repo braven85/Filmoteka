@@ -1,6 +1,6 @@
 const watchedBtn = document.querySelector('.watched');
 const queueBtn = document.querySelector('.queue');
-import { fetchMovieData } from './fetchMovie';
+import { fetchMovieData } from './fetchMovie.js';
 
 let movieData = {
   photo: '',
@@ -14,14 +14,23 @@ let movieData = {
   id: '',
 };
 
-document.addEventListener('click', target => {
+// generowanie karty pojedynczego filmu w modalu
+const openModalCard = document.querySelector('[data-modal-open]');
+
+const getModalData = (e) => {
+  let modalData = e.target.closest(".movie-card");
+  let movieId = modalData.getAttribute('data-id');
   try {
-    let movieId = target.path[2].getAttribute('data-id');
     if (movieId !== null) {
       renderMovie(movieId);
     }
-  } catch (e) {}
-});
+  } catch (error) {
+    console.log("Wystąpił błąd przy pobieraniu danych z bazy");
+  }
+}
+
+openModalCard.addEventListener('click', getModalData);
+// ====================================================
 
 function renderMovie(movieId) {
   clearModal();
@@ -86,7 +95,7 @@ function addToWatched() {
       break;
     }
   }
-
+  console.log(watchedMovie)
   if (newMovie === '') {
     console.log(`Film "${movieTitleForConsole.movieTitle}" jest już w bazie`);
   } else {
@@ -124,4 +133,7 @@ function addToQueue() {
 }
 
 watchedBtn.addEventListener('click', addToWatched);
+
 queueBtn.addEventListener('click', addToQueue);
+
+export { addToWatched, addToQueue, renderMovie };

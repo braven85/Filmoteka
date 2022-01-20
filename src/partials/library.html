@@ -38,17 +38,21 @@
         </naw>
         <ul class="library__button-list">
           <li class="library__button-item">
-            <button class="library__button library__button--first-child" type="button">Watched</button>
+            <button class="library__button library__button--first-child" type="button" id="btn-watched">Watched</button>
           </li>
           <li class="library__button-item">
-            <button class="library__button library__button--last-child" type="button">queue</button>
+            <button class="library__button library__button--last-child" type="button" id="btn-queue">queue</button>
           </li>
         </ul>
       </div>
     </header>
 
+    <div class="start">
+       <p class="start-info">There's nothing here. Please add a film to watched / queue. </br>If you already added something, enjoy buttons.</p>
+  </div>
 
     <include src="./partials/footer.html"></include>
+
 
   </div>
 
@@ -84,6 +88,7 @@
   </div>
 
   <script src="../js/students-modal.js"></script>
+  <script src="../js/library.js"></script>
   <script src="../index.js"></script>
 </body>
 
