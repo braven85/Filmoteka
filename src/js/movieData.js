@@ -14,14 +14,23 @@ let movieData = {
   id: '',
 };
 
-document.addEventListener('click', target => {
+// generowanie karty pojedynczego filmu w modalu
+const openModalCard = document.querySelector('[data-modal-open]');
+
+const getModalData = (e) => {
+  let modalData = e.target.closest(".movie-card");
+  let movieId = modalData.getAttribute('data-id');
   try {
-    let movieId = target.path[2].getAttribute('data-id');
     if (movieId !== null) {
       renderMovie(movieId);
     }
-  } catch (e) {}
-});
+  } catch (error) {
+    console.log("Wystąpił błąd przy pobieraniu danych z bazy");
+  }
+}
+
+openModalCard.addEventListener('click', getModalData);
+// ====================================================
 
 function renderMovie(movieId) {
   clearModal();
