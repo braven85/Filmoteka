@@ -8,40 +8,58 @@
   }
 
   &-picture {
-  width: 280px;
-  height: 398px;
-  border-radius: 5px;
+    width: 280px;
+    height: 398px;
+    border-radius: 5px;
   }
 
   &-img {
     width: 280px;
     height: 398px;
+    border-radius: 5px;
+    &:hover {
+      animation-name: pulseAndFlash;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.2s;
+    }
   }
 
-  &-description {
-  font-family: $main-font;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  width: 100%;
-  height: 443px - 398px;
-  display: block;
+  @keyframes pulseAndFlash {
+  0% {
+    transform: scaleX(1);
+    opacity: 0;
   }
-
-  &-title {
-  text-transform: uppercase;
-  padding-top: 10px;
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0.5;
   }
-
-  &-genre {
-  color: $details-color;
+  to {
+    transform: scaleX(1);
+    opacity: 1;
   }
 }
 
+  &-description {
+    font-family: $main-font;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    width: 100%;
+    height: 443px - 398px;
+    display: block;
+  }
 
+  &-title {
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
+
+  &-genre {
+    color: $details-color;
+  }
+}
 
 @media screen and (min-width: 768px) {
-
   .movie {
     &-card {
       width: 239px;
@@ -63,11 +81,9 @@
       height: 45px;
     }
   }
-
 }
 
 @media screen and (min-width: 1024px) {
-
   .movie {
     &-card {
       width: 274px;
@@ -82,5 +98,4 @@
       height: 398px;
     }
   }
-
 }

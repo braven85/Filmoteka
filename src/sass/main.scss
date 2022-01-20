@@ -1,4 +1,5 @@
 @import './base/container';
+@import './base/common';
 
 // Style dla pliku z przykładem HTML fragmentu
 //@import './example';
@@ -10,7 +11,6 @@
 @import './backdrop';
 
 
-@import './utils/variables';
 @import './layouts/header';
 @import './utils/container';
 @import './utils/gallery';
@@ -19,3 +19,5 @@
 @import './layouts/footer';
 
 @import './components/card-template';
+
+@import './components/students-modal';

@@ -31,9 +31,18 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 1.143;
-    color: $footer-color;
+    }
+
+    &_link {
+      text-decoration: underline;
+      &:hover,
+      &:focus {
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
   }
-}
+
 
 @media screen and (min-width: 768px){
   .footer{

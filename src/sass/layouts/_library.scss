@@ -10,30 +10,45 @@
   .library{
       background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
       url(../images/header_lib_mobile.png);
-      height: 230px;
+      min-height: 230px;
       background-repeat: no-repeat;
       background-size: cover;
       padding-right: 20px;
       padding-left: 21px;
-  
+      &__div{
+        display: flex;
+        justify-content: space-between;
+      }
       &__icon{
-        margin-top: 46px;
+        margin-top: 56px;
       }
       &__name{
         color: transparent;
         display: inline-block;
+        // position: relative;
       }
+      // &__try2{
+      //   display: flex;
+      //   justify-content: flex-end;
+      // }
       &__navigation{
         display: inline-block;
-        justify-content: center;
+        margin-top: 58px;
+        height: 14px;
+        // position: fixed;
+        // top: 58px;
+        // right: 20px;
       }
       &__navigation-list{
         list-style: none;
         align-items: center;
-        display: flex;
+        display: flex; 
+        // justify-content: right;
+        gap: 30px;
       }
       &__navigation-item--lastchild{
-        margin-left: 30px;
+        // margin-left: 30px;
+        margin-right: auto;
         border-bottom: 3px solid $details-color;
       }
       &__navigation-link{
@@ -50,9 +65,12 @@
       height: 14px;
       display: flex;
       text-decoration: none;
+      // color: blue;
       }
       &__button-list{
       display: flex;
+      justify-content: center;
+      gap: 20px;
       list-style: none;
       }
       &__button{
@@ -73,7 +91,7 @@
       border: 1px solid $main-color;
       box-sizing: border-box;
       border-radius: 5px;
-      margin-top: 49px;
+      margin-top: 39px;
 
       &:hover,
       &:focus{
@@ -82,20 +100,46 @@
         border: transparent;
       }
       }
-      &__button--last-child{
-        margin-left: 30px;
-      }
+      // &__button--last-child{
+      //   margin-left: 30px;
+      // }
   }
 
-@media screen and (min-width: 480px){
+// @media screen and (min-width: 480px){
+//   .library{
+//     background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
+//       url(../images/header_lib_tablet.png);
+//       height: 230px;
+//       padding-left: 71px;
+//       padding-right: 70px;
+  
+//     &__name{
+//     font-family: $main-font;
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 30px;
+//     line-height: 35px;
+//     align-items: center;
+//     text-align: center;
+//     color: $main-color;
+//     margin-right: 30px;
+//     }
+//     &__button--first-child{
+//       margin-left: 35px;
+//     }
+//   }
+// }
+
+@media screen and (min-width: 768px){
   .library{
     background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
-      url(../images/header_lib_tablet.png);
-      height: 230px;
-      padding-left: 71px;
-      padding-right: 70px;
-  
-    &__name{
+    url(../images/header_lib_tablet.png);
+    height: 230px;
+    padding-left: 71px;
+    padding-right: 70px;
+    max-width: 100%;
+
+  &__name{
     font-family: $main-font;
     font-style: normal;
     font-weight: 500;
@@ -104,12 +148,26 @@
     align-items: center;
     text-align: center;
     color: $main-color;
-    margin-right: 30px;
-    }
-    &__button--first-child{
-      margin-left: 35px;
-    }
+  //  margin-right: 304px;
   }
+  // &__navigation{
+  //   right: 75px;
+  // }
+  &__navigation-list{
+    gap: 39px;
+  }
+  &__button{
+  max-width: 136px;
+  height: 44px;
+  padding: 14px 38px 12px 38px; 
+  }
+  // .library__button--first-child{
+  //   margin-left: 170px;
+  // }
+  // .library__button--last-child{
+  //   margin-left: 15px;
+  // }
+}
 }
 @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -120,38 +178,23 @@
     }
   }
 
-@media screen and (min-width: 768px){
-  .library__name{
-   margin-right: 304px;
-  }
-  .library__navigation-item--lastchild{
-    margin-left: 39px;
-  }
-  .library__button{
-  max-width: 136px;
-  height: 44px;
-  padding: 14px 38px 12px 38px; 
-  }
-  .library__button--first-child{
-    margin-left: 170px;
-  }
-  .library__button--last-child{
-    margin-left: 15px;
-  }
-}
-
 @media screen and (min-width: 1024px){
   .library{
     background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
       url(../images/header_lib_desktop.png);
       padding-left: 71px;
       padding-right: 71px;
-  &__name{
-    margin-right: 564px
-  }
-  &__button--first-child{
-    margin-left: 298px;
-  }
+      max-width: 100%;
+      min-height: 100%;
+      // &__navigation{
+      //   left: 810px;
+      // }
+  // &__name{
+  //   margin-right: 564px;
+  // }
+  // &__button--first-child{
+  //   margin-left: 298px;
+  // }
 }
 }
 @media (min-device-pixel-ratio: 2),
@@ -162,3 +205,64 @@
       url(../images/header_lib_desktop@2x.png);
     }
   }
+
+   //////////////////////////////////////////////
+  .start-info{
+    text-align: center;
+    color: #ff001b;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.17;
+    font-family: Roboto,sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+.lib-gallery__list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-bottom: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    }
+.lib-gallery__image{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 280px;
+    height: 398px;
+    border-radius: 5px;
+}
+.lib-gallery__desc{
+    font-family: $main-font;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    // width: 100%;
+    color: $details-color;
+}
+.lib-gallery__title{
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@media screen and (min-width: 768px){
+  .lib-gallery__list{
+    padding-top: 40px 75px 50px 75px;
+  }
+  .lib-gallery__image{
+    width: 294px;
+    height: 398px;
+  }
+}
+@media screen and (min-width: 1024px){
+  .lib-gallery__list{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .lib-gallery__image{
+    width: 274px;
+    height: 398px;
+  }
+}

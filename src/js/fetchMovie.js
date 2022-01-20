@@ -9,8 +9,8 @@ async function fetchMovieData(movieId) {
   const response = await fetch(
     `${api.baseUrl}/3/movie/${movieId}?api_key=${api.apiKey}&language=en-US`
   );
-  const jsonData = await response.json();
-  return jsonData;
+
+  return response.json();
 }
 
 

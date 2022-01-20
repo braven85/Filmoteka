@@ -1,37 +1,71 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
-      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
-      crossorigin="anonymous"
-    />
 
-    <link rel="stylesheet" href="./sass/main.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filmoteka</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+    integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+    crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="./sass/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="students-content">
     <include src="./partials/menu.html"></include>
     <include src="./partials/gallery.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
+  </div>
 
-    <script src="./js/fetchMovie.js"></script>
-    <script src="./js/gallery.js"></script>
+  <div id="students-container">
+    <div class="students-background">
+      <div class="students">
+        <h2>Studenci GoIT:</h2>
+        <div class="students-list">
+          <div class="students-list__item">
+            <img class="students-picture" src="./images/icons/publicdomainq-worker.svg" alt="">
+            <div class="students-name">Roksana</div>
+          </div>
+          <div class="students-list__item">
+            <img class="students-picture" src="./images/icons/publicdomainq-user.svg" alt="">
+            <div class="students-name">Monika</div>
+          </div>
+          <div class="students-list__item">
+            <img class="students-picture" src="./images/icons/exhausted_computer_user.svg" alt="">
+            <div class="students-name">Wojtek</div>
+          </div>
+          <div class="students-list__item">
+            <img class="students-picture" src="./images/icons/exhausted_computer_user2.svg" alt="">
+            <div class="students-name">Michał</div>
+          </div>
+          <div class="students-list__item">
+            <img class="students-picture" src="./images/icons/sleeping_user.svg" alt="">
+            <div class="students-name">Radek</div>
+          </div>
+        </d>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/students-modal.js"></script>
+
+  <script src="./js/fetchMovie.js"></script>
+  <script src="./js/gallery.js"></script>
+
+  <script src="./js/movieData.js"></script>
+  <script src="./js/modal.js"></script>
 
     <script src="./js/movieData.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/firebase.js"></script>
 
-    <!-- <script src="./index.js"></script> -->
+    <script src="./index.js"></script>
   </body>
 </html>
