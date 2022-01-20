@@ -320,8 +320,8 @@ li {
           transform: scale(1);
   -webkit-transition-property: inherit;
   transition-property: inherit;
-  -webkit-transition-duration: 200ms;
-          transition-duration: 200ms;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
   padding: 20px 20px;
   background: rgba(0, 0, 0, 0.8);
   width: 100%;
