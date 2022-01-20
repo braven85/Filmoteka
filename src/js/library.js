@@ -1,4 +1,3 @@
-import '../sass/main.scss';
 import { fetchMovieData } from './fetchMovie';
 
 const buttonWatched = document.querySelector('#btn-watched');
