@@ -6,15 +6,15 @@ modalContainer.addEventListener('click', closeModal);
 
 function openModal() {
   modalContainer.removeAttribute('.class');
-  modalContainer.classList.add('one');
+  modalContainer.classList.add('appear');
   document.body.classList.add('students-active');
 }
 
 function closeModal() {
-  modalContainer.classList.add('out');
+  modalContainer.classList.add('disappear');
   document.body.classList.remove('students-active');
   setTimeout(() => {
-  modalContainer.classList.remove('one');
-  modalContainer.classList.remove('out');
+  modalContainer.classList.remove('appear');
+  modalContainer.classList.remove('disappear');
   }, 1500);
 }

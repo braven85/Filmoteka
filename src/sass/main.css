@@ -1032,28 +1032,28 @@ body.students-active {
   z-index: 1;
 }
 
-#students-container.one {
+#students-container.appear {
   -webkit-transform: scaleY(0.01) scaleX(0);
           transform: scaleY(0.01) scaleX(0);
   -webkit-animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
           animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#students-container.one .students-background .students {
+#students-container.appear .students-background .students {
   -webkit-transform: scale(0);
           transform: scale(0);
   -webkit-animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
           animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#students-container.one.out {
+#students-container.appear.disappear {
   -webkit-transform: scale(1);
           transform: scale(1);
   -webkit-animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
           animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#students-container.one.out .students-background .students {
+#students-container.appear.disappear .students-background .students {
   -webkit-animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
           animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
