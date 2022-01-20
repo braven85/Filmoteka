@@ -34,6 +34,7 @@
     }
 
     &_link {
+      text-decoration: underline;
       &:hover,
       &:focus {
         font-weight: bold;

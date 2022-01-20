@@ -350,7 +350,6 @@ body {
   min-width: 320px;
   margin: 0;
   padding: 0;
-  min-width: 320px;
 }
 
 body.students-active {
@@ -943,28 +942,13 @@ body.students-active {
   line-height: 1.143;
 }
 
+.footer_link {
+  text-decoration: underline;
+}
+
 .footer_link:hover, .footer_link:focus {
   font-weight: bold;
   cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-  .footer {
-    height: 77px;
-  }
-  .footer_info {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .footer_style {
-    margin-top: 0;
-    margin-left: 4px;
-  }
-  .footer_first, .footer_second, .footer_third, .footer_link {
-    font-size: 16px;
-    line-height: 1.188;
-  }
 }
 
 @media screen and (min-width: 768px) {
