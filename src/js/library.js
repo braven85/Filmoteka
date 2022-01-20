@@ -19,7 +19,7 @@ list.classList.add('lib-gallery__list');
 // buttonQueue.addEventListener('click', handleClickQ);
 
 
-const imgURL = 'http://image.tmdb.org/t/p/w500/';
+const imgURL = 'https://image.tmdb.org/t/p/w500/';
 function renderMyOneMovie(movie) {
     const { id, poster_path, original_title, release_date, genres } = movie;
     //let year = release_date?.slice(0, 4) ?? '';

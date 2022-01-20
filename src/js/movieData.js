@@ -1,6 +1,6 @@
 const watchedBtn = document.querySelector('.watched');
 const queueBtn = document.querySelector('.queue');
-import { fetchMovieData } from './fetchMovie';
+import { fetchMovieData } from './fetchMovie.js';
 
 let movieData = {
   photo: '',

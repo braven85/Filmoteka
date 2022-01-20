@@ -62,7 +62,7 @@ function building(resp) {
       }
       return `<div class="movie-card" data-id="${variable.id}" >
   <div class="movie-picture" data-modal-open>
-    <img class="movie-img" src="http://image.tmdb.org/t/p/w500/${variable.poster_path}" alt="${movieName} poster">
+    <img class="movie-img" src="https://image.tmdb.org/t/p/w500/${variable.poster_path}" alt="${movieName} poster">
   </div>
   <div class="movie-description">
     <div class="movie-title">
