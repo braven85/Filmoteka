@@ -1,4 +1,4 @@
-import { fetchMovieData } from './fetchMovie';
+import { fetchMovieData } from './fetchMovie.js';
 
 const buttonWatched = document.querySelector('#btn-watched');
 const buttonQueue = document.querySelector('#btn-queue');
@@ -8,21 +8,28 @@ const list = document.createElement('ul');
 list.classList.add('lib-gallery__list');
 
 // click control
-const handleClick = () => {
-  console.log('btn Watched was clicked');
-};
-buttonWatched.addEventListener('click', handleClick);
+// const handleClick = () => {
+//   console.log('btn Watched was clicked');
+// };
+// buttonWatched.addEventListener('click', handleClick);
 
-const handleClickQ = () => {
-  console.log('btn Queue was clicked');
-};
-buttonQueue.addEventListener('click', handleClickQ);
+// const handleClickQ = () => {
+//   console.log('btn Queue was clicked');
+// };
+// buttonQueue.addEventListener('click', handleClickQ);
 
 
 const imgURL = 'http://image.tmdb.org/t/p/w500/';
 function renderMyOneMovie(movie) {
     const { id, poster_path, original_title, release_date, genres } = movie;
-    let year = release_date?.slice(0, 4) ?? '';
+    //let year = release_date?.slice(0, 4) ?? '';
+    let year;
+    if (year !== '') {
+      year = release_date.slice(0,4);
+    } else {
+      year = '';
+    }
+    console.log(year);
     let myGenre = genres.map(genre => genre.name).join(', ');
     list.innerHTML += `
           <li class="lib-gallery__item"><img class="lib-gallery__image" id="${id}" src="${imgURL}${poster_path}" alt="${original_title}" />
