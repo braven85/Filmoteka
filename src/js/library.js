@@ -29,7 +29,6 @@ function renderMyOneMovie(movie) {
     } else {
       year = '';
     }
-    console.log(year);
     let myGenre = genres.map(genre => genre.name).join(', ');
     list.innerHTML += `
           <li class="lib-gallery__item"><img class="lib-gallery__image" id="${id}" src="${imgURL}${poster_path}" alt="${original_title}" />
