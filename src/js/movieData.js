@@ -81,6 +81,7 @@ function buttonColorsWatched(movieId) {
       watchedBtn.style.color = 'white';
       watchedBtn.style.borderStyle = 'none';
       watchedBtn.innerHTML = 'Watched';
+      break;
     } else {
       watchedBtn.style.backgroundColor = '#FFFFFF';
       watchedBtn.style.color = 'black';
@@ -99,6 +100,7 @@ function buttonColorsQueue(movieId) {
       queueBtn.style.color = 'white';
       queueBtn.style.borderStyle = 'none';
       queueBtn.innerHTML = 'Queue';
+      break;
     } else {
       queueBtn.style.backgroundColor = '#FFFFFF';
       queueBtn.style.color = 'black';
