@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "firebase": "^9.6.3",
+    "firebase": "^9.6.4",
     "firebase-admin": "^4.2.1"
   }
 }
