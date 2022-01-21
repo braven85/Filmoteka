@@ -233,7 +233,28 @@
     width: 280px;
     height: 398px;
     border-radius: 5px;
+    &:hover {
+      animation-name: pulseAndFlash;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.2s;
+    }
 }
+
+@keyframes pulseAndFlash {
+  0% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0.5;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 .lib-gallery__desc{
     font-family: $main-font;
     font-weight: 500;
