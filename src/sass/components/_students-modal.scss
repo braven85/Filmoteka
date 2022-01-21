@@ -35,14 +35,15 @@
 
     .students {
       max-width: 300px;
+      max-height: 95%;
       background: linear-gradient(rgb(255, 168, 118), rgb(255, 81, 0));
       padding: 10px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: auto;
       display: block;
       border-radius: 3px;
       font-weight: 300;
       position: relative;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 
       h2 {
         display: flex;
@@ -55,6 +56,7 @@
         line-height: 25px;
         margin-bottom: 15px;
         color: $main-color;
+        text-shadow: 2px 2px 4px black;
       }
 
       &-list {
@@ -65,8 +67,9 @@
       &-picture {
         border: 2px solid black;
         border-radius: 25px;
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
       }
 
       &-name {
@@ -76,6 +79,7 @@
         font-size: 20px;
         line-height: 24px;
         color: rgb(67, 0, 94);
+        text-shadow: 1px 1px 2px white;
       }
     }
   }
