@@ -67,26 +67,24 @@ function renderMovie(movieId) {
       .insertAdjacentHTML('afterbegin', `${movieData.orginalTitle}`);
     document.querySelector('.genre').insertAdjacentHTML('afterbegin', `${movieData.genre}`);
     document.querySelector('.modal__about').insertAdjacentHTML('afterbegin', `${movieData.about}`);
-  
-    buttonColorsWatched(movieId);
-    buttonColorsQueue(movieId);
   });
-
+  buttonColorsWatched(movieId);
+  buttonColorsQueue(movieId);
 }
 
 function buttonColorsWatched(movieId) {
   let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
   if (watchedMovie == null) watchedMovie = [];
   for (let movie of watchedMovie) {
-    if ( movieId == movie.ID) {
-      watchedBtn.style.backgroudColor = '#ff6b01';
+    if (movieId == movie.ID) {
+      watchedBtn.style.backgroundColor = '#ff6b01';
       watchedBtn.style.color = 'white';
       watchedBtn.style.borderStyle = 'none';
-      watchedBtn.innerHTML = 'Watched';   
+      watchedBtn.innerHTML = 'Watched';
     } else {
-      watchedBtn.style.backgroudColor = 'white';
+      watchedBtn.style.backgroundColor = '#FFFFFF';
       watchedBtn.style.color = 'black';
-      watchedBtn.style.border = '1px solid black'
+      watchedBtn.style.border = '1px solid black';
       watchedBtn.style.innerHTML = 'Add to watched';
     }
   }
@@ -97,21 +95,18 @@ function buttonColorsQueue(movieId) {
   if (queue == null) queue = [];
   for (let movie of queue) {
     if (movieId == movie.ID) {
-      queueBtn.style.backgroudColor = '#ff6b01';
+      queueBtn.style.backgroundColor = '#ff6b01';
       queueBtn.style.color = 'white';
       queueBtn.style.borderStyle = 'none';
       queueBtn.innerHTML = 'Queue';
-      break;
     } else {
-      queueBtn.style.backgroudColor = 'white';
-      queueBtn.style.innerHTML = 'Add to queue';
+      queueBtn.style.backgroundColor = '#FFFFFF';
       queueBtn.style.color = 'black';
       queueBtn.style.border = '1px solid black';
+      queueBtn.style.innerHTML = 'Add to queue';
     }
   }
 }
-
-
 
 function clearModal() {
   document.querySelector('.movie').innerHTML = '';
@@ -172,7 +167,6 @@ function addToQueue() {
     console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do kolejki`);
   }
 }
-
 
 watchedBtn.addEventListener('click', addToWatched);
 
