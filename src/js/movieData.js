@@ -122,22 +122,36 @@ function clearModal() {
 }
 
 function addToWatched() {
-  let watchedMovie;
-  watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
   if (watchedMovie == null) watchedMovie = [];
 
   let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
   let newMovie = { movieTitle: movieData.title, ID: movieData.id };
 
   for (let movie of watchedMovie) {
-    if (movie.ID === newMovie.ID) {
+    if (movie.ID == newMovie.ID) {
       newMovie = '';
       break;
     }
   }
 
   if (newMovie === '') {
-    console.log(`Film "${movieTitleForConsole.movieTitle}" jest już w bazie`);
+    for (let movie of watchedMovie) {
+      if (movie.ID == movieTitleForConsole.ID) {
+        let movieIndex = watchedMovie.indexOf(movie);
+        watchedMovie.splice(movieIndex, 1);
+        localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+        buttonColorsWatched(movie.ID);
+        console.log(`Usunąłeś film "${movieTitleForConsole.movieTitle}" z obejrzanych`);
+        if (watchedMovie.length == 0) {
+          watchedBtn.style.backgroundColor = '#FFFFFF';
+          watchedBtn.style.color = 'black';
+          watchedBtn.style.border = '1px solid black';
+          watchedBtn.innerHTML = 'Add to watched';
+        }
+        break;
+      }
+    }
   } else {
     watchedMovie.push(newMovie);
     localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
@@ -147,23 +161,36 @@ function addToWatched() {
 }
 
 function addToQueue() {
-  let queue;
-
-  queue = JSON.parse(localStorage.getItem('queue'));
+  let queue = JSON.parse(localStorage.getItem('queue'));
   if (queue == null) queue = [];
 
   let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
   let newMovie = { movieTitle: movieData.title, ID: movieData.id };
 
   for (let movie of queue) {
-    if (movie.ID === newMovie.ID) {
+    if (movie.ID == newMovie.ID) {
       newMovie = '';
       break;
     }
   }
 
   if (newMovie === '') {
-    console.log(`Film "${movieTitleForConsole.movieTitle}" jest już w kolejce`);
+    for (let movie of queue) {
+      if (movie.ID == movieTitleForConsole.ID) {
+        let movieIndex = queue.indexOf(movie);
+        queue.splice(movieIndex, 1);
+        localStorage.setItem('queue', JSON.stringify(queue));
+        buttonColorsQueue(movie.ID);
+        console.log(`Usunąłeś film "${movieTitleForConsole.movieTitle}" z kolejki`);
+        if (queue.length == 0) {
+          queueBtn.style.backgroundColor = '#FFFFFF';
+          queueBtn.style.color = 'black';
+          queueBtn.style.border = '1px solid black';
+          queueBtn.innerHTML = 'Add to queue';
+        }
+        break;
+      }
+    }
   } else {
     queue.push(newMovie);
     localStorage.setItem('queue', JSON.stringify(queue));
