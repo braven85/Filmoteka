@@ -23,22 +23,5 @@ var opts = {
   position: 'absolute', // Element positioning
 };
 
-const target = document.getElementById("spin-header");
-const spinner = new Spinner(opts).spin(target);
-
-// setTimeout(() => {
-//   target.appendChild(spinner.el);
-// }, 2000);
-
-// var target = document.getElementById('foo');
-// var spinner = new Spinner(opts).spin(target);
-
-// manual insertion
-
-// var spinner = new Spinner().spin();
-// target.appendChild(spinner.el);
-
-// Hiding the spinner
-
-// To hide the spinner, invoke the stop() method, which removes the UI elements from the DOM and stops the animation.
-// Stopped spinners may be reused by calling spin() again.
+export const target = document.querySelector('.test-spinner');
+export const spinner = new Spinner(opts);

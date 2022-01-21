@@ -38,6 +38,7 @@
 }
 
 .test-spinner {
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
 }
