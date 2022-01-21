@@ -33,7 +33,6 @@ openModalCard.addEventListener('click', getModalData);
 // ====================================================
 
 function renderMovie(movieId) {
-  console.log("jestem tutaj");
   clearModal();
   fetchMovieData(movieId).then(res => {
     let data = res;
@@ -137,4 +136,4 @@ watchedBtn.addEventListener('click', addToWatched);
 
 queueBtn.addEventListener('click', addToQueue);
 
-export { addToWatched, addToQueue, renderMovie, clearModal };
+export { addToWatched, addToQueue };

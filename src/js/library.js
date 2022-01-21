@@ -73,6 +73,10 @@ function getQueque() {
 }
 buttonQueue.addEventListener('click', getQueque);
 
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE 
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE 
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE 
+
 const openModalCard = document.querySelector('[data-modal-open]');
 
 const getModalData = (e) => {
@@ -103,7 +107,6 @@ let movieData = {
 
 function renderMovieLib(movieId) {
   clearModal();
-  console.log(`jestem tutaj ${movieId}`);
   fetchMovieData(movieId).then(res => {
     let data = res;
     movieData.photo = data.poster_path;
