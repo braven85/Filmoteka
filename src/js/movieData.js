@@ -142,7 +142,6 @@ function addToWatched() {
         watchedMovie.splice(movieIndex, 1);
         localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
         buttonColorsWatched(movie.ID);
-        console.log(`Usunąłeś film "${movieTitleForConsole.movieTitle}" z obejrzanych`);
         if (watchedMovie.length == 0) {
           watchedBtn.style.backgroundColor = '#FFFFFF';
           watchedBtn.style.color = 'black';
@@ -155,7 +154,6 @@ function addToWatched() {
   } else {
     watchedMovie.push(newMovie);
     localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
-    console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do obejrzanych`);
     buttonColorsWatched(newMovie.ID);
   }
 }
@@ -181,7 +179,6 @@ function addToQueue() {
         queue.splice(movieIndex, 1);
         localStorage.setItem('queue', JSON.stringify(queue));
         buttonColorsQueue(movie.ID);
-        console.log(`Usunąłeś film "${movieTitleForConsole.movieTitle}" z kolejki`);
         if (queue.length == 0) {
           queueBtn.style.backgroundColor = '#FFFFFF';
           queueBtn.style.color = 'black';
@@ -194,7 +191,6 @@ function addToQueue() {
   } else {
     queue.push(newMovie);
     localStorage.setItem('queue', JSON.stringify(queue));
-    console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do kolejki`);
     buttonColorsQueue(newMovie.ID);
   }
 }

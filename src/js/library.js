@@ -35,6 +35,10 @@ function getWatched() {
   div.innerHTML = '';
   list.innerHTML = '';
   buttonWatched.removeEventListener('click', getWatched);
+  buttonWatched.style.background = '#FF6B01';
+  buttonWatched.style.border = 'transparent';
+  buttonQueue.style.background = 'transparent';
+  buttonQueue.style.border = '1px solid #FFF';
   buttonQueue.addEventListener('click', getQueque);
   if (watchedMovie === null) {
     div.innerHTML = `<p class="start-info">EMPTY!</p>`;
@@ -53,9 +57,13 @@ function getQueque() {
   div.innerHTML = '';
   list.innerHTML = '';
   buttonQueue.removeEventListener('click', getQueque);
+  buttonQueue.style.backgroundColor = '#FF6B01';
+  buttonQueue.style.border = 'transparent';
+  buttonWatched.style.background = 'transparent';
+  buttonWatched.style.border = '1px solid #FFF';
   buttonWatched.addEventListener('click', getWatched);
   if (queue === null) {
-    div.innerHTML = `<p class="start-info">EMPTY!</p>`;   
+    div.innerHTML = `<p class="start-info">EMPTY!</p>`;
   } else {
     for (let movie of queue) {
       info.remove();
@@ -67,9 +75,9 @@ function getQueque() {
 }
 buttonQueue.addEventListener('click', getQueque);
 
-// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE 
-// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE 
-// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE 
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE
 
 const openModalCard = document.querySelector('[data-modal-open]');
 
@@ -135,6 +143,8 @@ function renderMovieLib(movieId) {
     document.querySelector('.genre').insertAdjacentHTML('afterbegin', `${movieData.genre}`);
     document.querySelector('.modal__about').insertAdjacentHTML('afterbegin', `${movieData.about}`);
   });
+  buttonColorsWatched(movieId);
+  buttonColorsQueue(movieId);
 }
 
 function clearModal() {
@@ -147,3 +157,126 @@ function clearModal() {
   document.querySelector('.genre').innerHTML = '';
   document.querySelector('.modal__about').innerHTML = '';
 }
+
+const watchedBtn = document.querySelector('.watched');
+const queueBtn = document.querySelector('.queue');
+
+function buttonColorsWatched(movieId) {
+  watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  if (watchedMovie == null) watchedMovie = [];
+  for (let movie of watchedMovie) {
+    if (movieId == movie.ID) {
+      watchedBtn.style.backgroundColor = '#ff6b01';
+      watchedBtn.style.color = 'white';
+      watchedBtn.style.borderStyle = 'none';
+      watchedBtn.innerHTML = 'Watched';
+      break;
+    } else {
+      watchedBtn.style.backgroundColor = '#FFFFFF';
+      watchedBtn.style.color = 'black';
+      watchedBtn.style.border = '1px solid black';
+      watchedBtn.innerHTML = 'Add to watched';
+    }
+  }
+}
+
+function buttonColorsQueue(movieId) {
+  queue = JSON.parse(localStorage.getItem('queue'));
+  if (queue == null) queue = [];
+  for (let movie of queue) {
+    if (movieId == movie.ID) {
+      queueBtn.style.backgroundColor = '#ff6b01';
+      queueBtn.style.color = 'white';
+      queueBtn.style.borderStyle = 'none';
+      queueBtn.innerHTML = 'In queue';
+      break;
+    } else {
+      queueBtn.style.backgroundColor = '#FFFFFF';
+      queueBtn.style.color = 'black';
+      queueBtn.style.border = '1px solid black';
+      queueBtn.innerHTML = 'Add to queue';
+    }
+  }
+}
+
+function addToWatched() {
+  watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  if (watchedMovie == null) watchedMovie = [];
+
+  let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
+  let newMovie = { movieTitle: movieData.title, ID: movieData.id };
+
+  for (let movie of watchedMovie) {
+    if (movie.ID == newMovie.ID) {
+      newMovie = '';
+      break;
+    }
+  }
+
+  if (newMovie === '') {
+    for (let movie of watchedMovie) {
+      if (movie.ID == movieTitleForConsole.ID) {
+        let movieIndex = watchedMovie.indexOf(movie);
+        watchedMovie.splice(movieIndex, 1);
+        localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+        buttonColorsWatched(movie.ID);
+        if (watchedMovie.length == 0) {
+          watchedBtn.style.backgroundColor = '#FFFFFF';
+          watchedBtn.style.color = 'black';
+          watchedBtn.style.border = '1px solid black';
+          watchedBtn.innerHTML = 'Add to watched';
+        }
+        getWatched();
+        break;
+      }
+    }
+  } else {
+    watchedMovie.push(newMovie);
+    localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+    buttonColorsWatched(newMovie.ID);
+    getWatched();
+  }
+}
+
+function addToQueue() {
+  queue = JSON.parse(localStorage.getItem('queue'));
+  if (queue == null) queue = [];
+
+  let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
+  let newMovie = { movieTitle: movieData.title, ID: movieData.id };
+
+  for (let movie of queue) {
+    if (movie.ID == newMovie.ID) {
+      newMovie = '';
+      break;
+    }
+  }
+
+  if (newMovie === '') {
+    for (let movie of queue) {
+      if (movie.ID == movieTitleForConsole.ID) {
+        let movieIndex = queue.indexOf(movie);
+        queue.splice(movieIndex, 1);
+        localStorage.setItem('queue', JSON.stringify(queue));
+        buttonColorsQueue(movie.ID);
+        if (queue.length == 0) {
+          queueBtn.style.backgroundColor = '#FFFFFF';
+          queueBtn.style.color = 'black';
+          queueBtn.style.border = '1px solid black';
+          queueBtn.innerHTML = 'Add to queue';
+        }
+        getQueque();
+        break;
+      }
+    }
+  } else {
+    queue.push(newMovie);
+    localStorage.setItem('queue', JSON.stringify(queue));
+    buttonColorsQueue(newMovie.ID);
+    getQueque();
+  }
+}
+
+watchedBtn.addEventListener('click', addToWatched);
+
+queueBtn.addEventListener('click', addToQueue);
