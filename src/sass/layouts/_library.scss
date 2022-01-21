@@ -25,29 +25,19 @@
       &__name{
         color: transparent;
         display: inline-block;
-        // position: relative;
       }
-      // &__try2{
-      //   display: flex;
-      //   justify-content: flex-end;
-      // }
       &__navigation{
         display: inline-block;
         margin-top: 58px;
         height: 14px;
-        // position: fixed;
-        // top: 58px;
-        // right: 20px;
       }
       &__navigation-list{
         list-style: none;
         align-items: center;
         display: flex; 
-        // justify-content: right;
         gap: 30px;
       }
       &__navigation-item--lastchild{
-        // margin-left: 30px;
         margin-right: auto;
         border-bottom: 3px solid $details-color;
       }
@@ -65,7 +55,6 @@
       height: 14px;
       display: flex;
       text-decoration: none;
-      // color: blue;
       }
       &__button-list{
       display: flex;
@@ -100,36 +89,7 @@
         border: transparent;
       }
       }
-      // &__button--last-child{
-      //   margin-left: 30px;
-      // }
   }
-
-// @media screen and (min-width: 480px){
-//   .library{
-//     background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
-//       url(../images/header_lib_tablet.png);
-//       height: 230px;
-//       padding-left: 71px;
-//       padding-right: 70px;
-  
-//     &__name{
-//     font-family: $main-font;
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 30px;
-//     line-height: 35px;
-//     align-items: center;
-//     text-align: center;
-//     color: $main-color;
-//     margin-right: 30px;
-//     }
-//     &__button--first-child{
-//       margin-left: 35px;
-//     }
-//   }
-// }
-
 @media screen and (min-width: 768px){
   .library{
     background-image:linear-gradient(rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56)),
@@ -148,11 +108,7 @@
     align-items: center;
     text-align: center;
     color: $main-color;
-  //  margin-right: 304px;
   }
-  // &__navigation{
-  //   right: 75px;
-  // }
   &__navigation-list{
     gap: 39px;
   }
@@ -161,12 +117,6 @@
   height: 44px;
   padding: 14px 38px 12px 38px; 
   }
-  // .library__button--first-child{
-  //   margin-left: 170px;
-  // }
-  // .library__button--last-child{
-  //   margin-left: 15px;
-  // }
 }
 }
 @media (min-device-pixel-ratio: 2),
@@ -186,15 +136,6 @@
       padding-right: 71px;
       max-width: 100%;
       min-height: 100%;
-      // &__navigation{
-      //   left: 810px;
-      // }
-  // &__name{
-  //   margin-right: 564px;
-  // }
-  // &__button--first-child{
-  //   margin-left: 298px;
-  // }
 }
 }
 @media (min-device-pixel-ratio: 2),
@@ -206,8 +147,8 @@
     }
   }
 
-   //////////////////////////////////////////////
-  .start-info{
+   // styles library.js
+.start-info{
     text-align: center;
     color: #ff001b;
     font-weight: 400;
@@ -216,8 +157,8 @@
     font-family: Roboto,sans-serif;
     margin-top: 10px;
     margin-bottom: 10px;
+    align-items: center;
   }
-
 .lib-gallery__list{
     display: flex;
     flex-wrap: wrap;
@@ -239,12 +180,13 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    // width: 100%;
+    width: 100%;
     color: $details-color;
 }
 .lib-gallery__title{
     text-transform: uppercase;
     color: #000000;
+    width: 100%;
 }
 
 @media screen and (min-width: 768px){
