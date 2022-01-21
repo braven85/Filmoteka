@@ -142,6 +142,7 @@ function addToWatched() {
     watchedMovie.push(newMovie);
     localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
     console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do obejrzanych`);
+    buttonColorsWatched(newMovie.ID);
   }
 }
 
@@ -167,6 +168,7 @@ function addToQueue() {
     queue.push(newMovie);
     localStorage.setItem('queue', JSON.stringify(queue));
     console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do kolejki`);
+    buttonColorsQueue(newMovie.ID);
   }
 }
 
