@@ -147,16 +147,6 @@ li {
   cursor: pointer;
 }
 
-.watched {
-  border: none;
-  background-color: #ff6b01;
-  color: $main-color;
-}
-
-.queue {
-  background-color: $main-color;
-}
-
 .modal__buttons {
   display: flex;
   justify-content: space-evenly;

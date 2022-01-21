@@ -17,17 +17,17 @@ let movieData = {
 // generowanie karty pojedynczego filmu w modalu
 const openModalCard = document.querySelector('[data-modal-open]');
 
-const getModalData = (e) => {
-  let modalData = e.target.closest(".movie-card");
+const getModalData = e => {
+  let modalData = e.target.closest('.movie-card');
   let movieId = modalData.getAttribute('data-id');
   try {
     if (movieId !== null) {
       renderMovie(movieId);
     }
   } catch (error) {
-    console.log("Wystąpił błąd przy pobieraniu danych z bazy");
+    console.log('Wystąpił błąd przy pobieraniu danych z bazy');
   }
-}
+};
 
 openModalCard.addEventListener('click', getModalData);
 // ====================================================
@@ -67,8 +67,51 @@ function renderMovie(movieId) {
       .insertAdjacentHTML('afterbegin', `${movieData.orginalTitle}`);
     document.querySelector('.genre').insertAdjacentHTML('afterbegin', `${movieData.genre}`);
     document.querySelector('.modal__about').insertAdjacentHTML('afterbegin', `${movieData.about}`);
+  
+    buttonColorsWatched(movieId);
+    buttonColorsQueue(movieId);
   });
+
 }
+
+function buttonColorsWatched(movieId) {
+  let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  if (watchedMovie == null) watchedMovie = [];
+  for (let movie of watchedMovie) {
+    if ( movieId == movie.ID) {
+      watchedBtn.style.backgroudColor = '#ff6b01';
+      watchedBtn.style.color = 'white';
+      watchedBtn.style.borderStyle = 'none';
+      watchedBtn.innerHTML = 'Watched';   
+    } else {
+      watchedBtn.style.backgroudColor = 'white';
+      watchedBtn.style.color = 'black';
+      watchedBtn.style.border = '1px solid black'
+      watchedBtn.style.innerHTML = 'Add to watched';
+    }
+  }
+}
+
+function buttonColorsQueue(movieId) {
+  let queue = JSON.parse(localStorage.getItem('queue'));
+  if (queue == null) queue = [];
+  for (let movie of queue) {
+    if (movieId == movie.ID) {
+      queueBtn.style.backgroudColor = '#ff6b01';
+      queueBtn.style.color = 'white';
+      queueBtn.style.borderStyle = 'none';
+      queueBtn.innerHTML = 'Queue';
+      break;
+    } else {
+      queueBtn.style.backgroudColor = 'white';
+      queueBtn.style.innerHTML = 'Add to queue';
+      queueBtn.style.color = 'black';
+      queueBtn.style.border = '1px solid black';
+    }
+  }
+}
+
+
 
 function clearModal() {
   document.querySelector('.movie').innerHTML = '';
@@ -95,7 +138,7 @@ function addToWatched() {
       break;
     }
   }
-  console.log(watchedMovie)
+
   if (newMovie === '') {
     console.log(`Film "${movieTitleForConsole.movieTitle}" jest już w bazie`);
   } else {
@@ -104,9 +147,7 @@ function addToWatched() {
     console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do obejrzanych`);
   }
 }
-  
 
-  
 function addToQueue() {
   let queue;
 
@@ -131,6 +172,7 @@ function addToQueue() {
     console.log(`Dodałeś film "${movieTitleForConsole.movieTitle}" do kolejki`);
   }
 }
+
 
 watchedBtn.addEventListener('click', addToWatched);
 
