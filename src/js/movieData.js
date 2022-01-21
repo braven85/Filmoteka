@@ -86,7 +86,7 @@ function buttonColorsWatched(movieId) {
       watchedBtn.style.backgroundColor = '#FFFFFF';
       watchedBtn.style.color = 'black';
       watchedBtn.style.border = '1px solid black';
-      watchedBtn.style.innerHTML = 'Add to watched';
+      watchedBtn.innerHTML = 'Add to watched';
     }
   }
 }
@@ -99,13 +99,13 @@ function buttonColorsQueue(movieId) {
       queueBtn.style.backgroundColor = '#ff6b01';
       queueBtn.style.color = 'white';
       queueBtn.style.borderStyle = 'none';
-      queueBtn.innerHTML = 'Queue';
+      queueBtn.innerHTML = 'In queue';
       break;
     } else {
       queueBtn.style.backgroundColor = '#FFFFFF';
       queueBtn.style.color = 'black';
       queueBtn.style.border = '1px solid black';
-      queueBtn.style.innerHTML = 'Add to queue';
+      queueBtn.innerHTML = 'Add to queue';
     }
   }
 }
