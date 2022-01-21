@@ -7,22 +7,9 @@ const div = document.querySelector('.start');
 const list = document.createElement('ul');
 list.classList.add('lib-gallery__list');
 
-// click control
-// const handleClick = () => {
-//   console.log('btn Watched was clicked');
-// };
-// buttonWatched.addEventListener('click', handleClick);
-
-// const handleClickQ = () => {
-//   console.log('btn Queue was clicked');
-// };
-// buttonQueue.addEventListener('click', handleClickQ);
-
-
 const imgURL = 'https://image.tmdb.org/t/p/w500/';
 function renderMyOneMovie(movie) {
     const { id, poster_path, original_title, release_date, genres } = movie;
-    //let year = release_date?.slice(0, 4) ?? '';
     let year;
     if (year !== '') {
       year = release_date.slice(0,4);
@@ -45,14 +32,17 @@ function renderLibMovies(movieId) {
 
 let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
 function getWatched() {
-  if (watchedMovie !== null) {
+  div.innerHTML = '';
+  list.innerHTML = '';
+  buttonWatched.removeEventListener('click', getWatched);
+  buttonQueue.addEventListener('click', getQueque);
+  if (watchedMovie === null) {
+    div.innerHTML = `<p class="start-info">EMPTY!</p>`;
+  } else {
     for (let movie of watchedMovie) {
       info.remove();
-      list.innerHTML = '';
       renderLibMovies(movie.ID);
     }
-    buttonWatched.removeEventListener('click', getWatched);
-    buttonQueue.addEventListener('click', getQueque)
   }
   div.append(list);
 }
@@ -60,14 +50,18 @@ buttonWatched.addEventListener('click', getWatched);
 
 let queue = JSON.parse(localStorage.getItem('queue'));
 function getQueque() {
-  if (queue !== null) {
+  div.innerHTML = '';
+  list.innerHTML = '';
+  buttonQueue.removeEventListener('click', getQueque);
+  buttonWatched.addEventListener('click', getWatched);
+  if (queue === null) {
+    div.innerHTML = `<p class="start-info">EMPTY!</p>`;   
+  } else {
     for (let movie of queue) {
       info.remove();
-      list.innerHTML ='';
+      list.innerHTML = '';
       renderLibMovies(movie.ID);
     }
-    buttonQueue.removeEventListener('click', getQueque);
-    buttonWatched.addEventListener('click', getWatched);
   }
   div.append(list);
 }
