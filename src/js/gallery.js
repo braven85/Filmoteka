@@ -1,3 +1,5 @@
+import { spinner, target } from './spinner.js';
+
 const axios = require('axios').default;
 const gallery = document.querySelector('.gallery');
 const search = document.querySelector('.header__icon--search');
@@ -7,6 +9,7 @@ const noResults = document.querySelector('.header__error');
 let IDS;
 
 async function fetchImages(page) {
+  spinner.spin(target);
   try {
     IDS = await axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&language=en-US`,
@@ -15,8 +18,11 @@ async function fetchImages(page) {
       `https://api.themoviedb.org/3/trending/all/day?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&page=${page}`,
     );
     building(res.data.results);
+    spinner.stop();
+
     return res.data;
   } catch (error) {
+    spinner.stop();
     return console.log('fail');
   }
 }
@@ -24,6 +30,7 @@ async function fetchImages(page) {
 fetchImages(1);
 
 async function fetchMovies(name) {
+  spinner.spin(target);
   try {
     const res = await axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&query=${name}`,
@@ -33,8 +40,10 @@ async function fetchMovies(name) {
     }
     gallery.innerHTML = '';
     building(res.data.results);
+    spinner.stop();
     return res.data;
   } catch (error) {
+    spinner.stop();
     return (noResults.style.display = 'flex');
   }
 }
