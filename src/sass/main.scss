@@ -10,7 +10,7 @@
 @import './backdrop';
 
 
-@import './utils/variables';
+
 @import './utils/container';
 @import './utils/gallery';
 
@@ -20,3 +20,7 @@
 @import './layouts/footer';
 
 @import './components/card-template';
+
+@import './components/students-modal';
+@import './utils/spinner';
+

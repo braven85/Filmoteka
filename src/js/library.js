@@ -1,6 +1,99 @@
-const watchedBtn = document.querySelector('.watched');
-const queueBtn = document.querySelector('.queue');
 import { fetchMovieData } from './fetchMovie.js';
+
+const buttonWatched = document.querySelector('#btn-watched');
+const buttonQueue = document.querySelector('#btn-queue');
+const info = document.querySelector('.start-info');
+const div = document.querySelector('.start');
+const list = document.createElement('ul');
+list.classList.add('lib-gallery__list');
+
+const imgURL = 'https://image.tmdb.org/t/p/w500/';
+function renderMyOneMovie(movie) {
+    const { id, poster_path, original_title, release_date, genres } = movie;
+    let year;
+    if (year !== '') {
+      year = release_date.slice(0,4);
+    } else {
+      year = '';
+    }
+    let myGenre = genres.map(genre => genre.name).join(', ');
+    list.innerHTML += `
+          <li class="lib-gallery__item"><img class="lib-gallery__image" id="${id}" src="${imgURL}${poster_path}" alt="${original_title}" />
+            <p class="lib-gallery__title">${original_title}</p>
+            <p class="lib-gallery__desc">${myGenre} | ${year}</p>
+          </li>`;
+  };
+
+function renderLibMovies(movieId) {
+  fetchMovieData(movieId).then(movie => {
+    renderMyOneMovie(movie);
+  });
+}
+
+let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+function getWatched() {
+  div.innerHTML = '';
+  list.innerHTML = '';
+  buttonWatched.removeEventListener('click', getWatched);
+  buttonWatched.style.background = '#FF6B01';
+  buttonWatched.style.border = 'transparent';
+  buttonQueue.style.background = 'transparent';
+  buttonQueue.style.border = '1px solid #FFF';
+  buttonQueue.addEventListener('click', getQueque);
+  if (watchedMovie === null) {
+    div.innerHTML = `<p class="start-info">EMPTY!</p>`;
+  } else {
+    for (let movie of watchedMovie) {
+      info.remove();
+      renderLibMovies(movie.ID);
+    }
+  }
+  div.append(list);
+}
+buttonWatched.addEventListener('click', getWatched);
+
+let queue = JSON.parse(localStorage.getItem('queue'));
+function getQueque() {
+  div.innerHTML = '';
+  list.innerHTML = '';
+  buttonQueue.removeEventListener('click', getQueque);
+  buttonQueue.style.backgroundColor = '#FF6B01';
+  buttonQueue.style.border = 'transparent';
+  buttonWatched.style.background = 'transparent';
+  buttonWatched.style.border = '1px solid #FFF';
+  buttonWatched.addEventListener('click', getWatched);
+  if (queue === null) {
+    div.innerHTML = `<p class="start-info">EMPTY!</p>`;
+  } else {
+    for (let movie of queue) {
+      info.remove();
+      list.innerHTML = '';
+      renderLibMovies(movie.ID);
+    }
+  }
+  div.append(list);
+}
+buttonQueue.addEventListener('click', getQueque);
+
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE
+// OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE OKNO MODALNE
+
+const openModalCard = document.querySelector('[data-modal-open]');
+
+const getModalData = (e) => {
+  let modalData = e.target.closest(".lib-gallery__image");
+  let movieId = modalData.getAttribute('id');
+  try {
+    if (movieId !== null) {
+      renderMovieLib(movieId);
+    }
+  } catch (error) {
+    console.log("Wystąpił błąd przy pobieraniu danych z bazy");
+  }
+}
+
+openModalCard.addEventListener('click', getModalData);
 
 let movieData = {
   photo: '',
@@ -14,25 +107,7 @@ let movieData = {
   id: '',
 };
 
-// generowanie karty pojedynczego filmu w modalu
-const openModalCard = document.querySelector('[data-modal-open]');
-
-const getModalData = e => {
-  let modalData = e.target.closest('.movie-card');
-  let movieId = modalData.getAttribute('data-id');
-  try {
-    if (movieId !== null) {
-      renderMovie(movieId);
-    }
-  } catch (error) {
-    console.log('Wystąpił błąd przy pobieraniu danych z bazy');
-  }
-};
-
-openModalCard.addEventListener('click', getModalData);
-// ====================================================
-
-function renderMovie(movieId) {
+function renderMovieLib(movieId) {
   clearModal();
   fetchMovieData(movieId).then(res => {
     let data = res;
@@ -72,8 +147,22 @@ function renderMovie(movieId) {
   buttonColorsQueue(movieId);
 }
 
+function clearModal() {
+  document.querySelector('.movie').innerHTML = '';
+  document.querySelector('.modal__movie-title').innerHTML = '';
+  document.querySelector('.vote').innerHTML = '';
+  document.querySelector('.votes').innerHTML = '';
+  document.querySelector('.popularity').innerHTML = '';
+  document.querySelector('.orginal-title').innerHTML = '';
+  document.querySelector('.genre').innerHTML = '';
+  document.querySelector('.modal__about').innerHTML = '';
+}
+
+const watchedBtn = document.querySelector('.watched');
+const queueBtn = document.querySelector('.queue');
+
 function buttonColorsWatched(movieId) {
-  let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
   if (watchedMovie == null) watchedMovie = [];
   for (let movie of watchedMovie) {
     if (movieId == movie.ID) {
@@ -92,7 +181,7 @@ function buttonColorsWatched(movieId) {
 }
 
 function buttonColorsQueue(movieId) {
-  let queue = JSON.parse(localStorage.getItem('queue'));
+  queue = JSON.parse(localStorage.getItem('queue'));
   if (queue == null) queue = [];
   for (let movie of queue) {
     if (movieId == movie.ID) {
@@ -110,19 +199,8 @@ function buttonColorsQueue(movieId) {
   }
 }
 
-function clearModal() {
-  document.querySelector('.movie').innerHTML = '';
-  document.querySelector('.modal__movie-title').innerHTML = '';
-  document.querySelector('.vote').innerHTML = '';
-  document.querySelector('.votes').innerHTML = '';
-  document.querySelector('.popularity').innerHTML = '';
-  document.querySelector('.orginal-title').innerHTML = '';
-  document.querySelector('.genre').innerHTML = '';
-  document.querySelector('.modal__about').innerHTML = '';
-}
-
 function addToWatched() {
-  let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
   if (watchedMovie == null) watchedMovie = [];
 
   let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
@@ -148,6 +226,7 @@ function addToWatched() {
           watchedBtn.style.border = '1px solid black';
           watchedBtn.innerHTML = 'Add to watched';
         }
+        getWatched();
         break;
       }
     }
@@ -155,11 +234,12 @@ function addToWatched() {
     watchedMovie.push(newMovie);
     localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
     buttonColorsWatched(newMovie.ID);
+    getWatched();
   }
 }
 
 function addToQueue() {
-  let queue = JSON.parse(localStorage.getItem('queue'));
+  queue = JSON.parse(localStorage.getItem('queue'));
   if (queue == null) queue = [];
 
   let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
@@ -185,6 +265,7 @@ function addToQueue() {
           queueBtn.style.border = '1px solid black';
           queueBtn.innerHTML = 'Add to queue';
         }
+        getQueque();
         break;
       }
     }
@@ -192,11 +273,10 @@ function addToQueue() {
     queue.push(newMovie);
     localStorage.setItem('queue', JSON.stringify(queue));
     buttonColorsQueue(newMovie.ID);
+    getQueque();
   }
 }
 
 watchedBtn.addEventListener('click', addToWatched);
 
 queueBtn.addEventListener('click', addToQueue);
-
-export { addToWatched, addToQueue };
