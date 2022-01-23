@@ -1,9 +1,4 @@
 import { spinner, target } from './spinner.js';
-import {
-  conditionalHide,
-  changeCurrentPageMovies, incrementMovies, decrementMovies, skipToFirstMovies, skipToLastMovies,
-  changeCurrentPage, increment, decrement, skipToFirst, skipToLast,
-} from './pagination';
 
 const axios = require('axios').default;
 
@@ -11,17 +6,7 @@ const gallery = document.querySelector('.gallery');
 const search = document.querySelector('.header__icon--search');
 const text = document.querySelector('.header__input');
 const noResults = document.querySelector('.header__error');
-
-// PAGINATION.JS
-const left = document.querySelector('.pagination_left');
-const first = document.querySelector('.pagination_first-page');
-const pageMinusTwo = document.querySelector('.pagination_less-two');
-const pageMinusOne = document.querySelector('.pagination_less-one');
 const current = document.querySelector('.pagination_current-page');
-const pagePlusOne = document.querySelector('.pagination_more-one');
-const pagePlusTwo = document.querySelector('.pagination_more-two');
-const last = document.querySelector('.pagination_last-page');
-const right = document.querySelector('.pagination_right');
 
 let IDS;
 
@@ -106,52 +91,19 @@ function building(resp) {
 
 search.addEventListener('click', () => {
   noResults.style.display = 'none';
-  current.textContent = 1;
-  conditionalHide();
   fetchMovies(text.value, current.textContent);
-  pageMinusTwo.removeEventListener('click', changeCurrentPage);
-  pageMinusOne.removeEventListener('click', changeCurrentPage);
-  pagePlusOne.removeEventListener('click', changeCurrentPage);
-  pagePlusTwo.removeEventListener('click', changeCurrentPage);
-  right.removeEventListener('click', increment);
-  left.removeEventListener('click', decrement);
-  first.removeEventListener('click', skipToFirst);
-  last.removeEventListener('click', skipToLast);
-  pageMinusTwo.addEventListener('click', changeCurrentPageMovies);
-  pageMinusOne.addEventListener('click', changeCurrentPageMovies);
-  pagePlusOne.addEventListener('click', changeCurrentPageMovies);
-  pagePlusTwo.addEventListener('click', changeCurrentPageMovies);
-  right.addEventListener('click', incrementMovies);
-  left.addEventListener('click', decrementMovies);
-  first.addEventListener('click', skipToFirstMovies);
-  last.addEventListener('click', skipToLastMovies);
+  current.textContent = 1;
 });
 
 text.addEventListener('keyup', (event) => {
   if (event.keyCode === 13) {
     event.preventDefault();
-    current.textContent = 1;
-    conditionalHide();
     noResults.style.display = 'none';
     fetchMovies(text.value, current.textContent);
-    pageMinusTwo.removeEventListener('click', changeCurrentPage);
-    pageMinusOne.removeEventListener('click', changeCurrentPage);
-    pagePlusOne.removeEventListener('click', changeCurrentPage);
-    pagePlusTwo.removeEventListener('click', changeCurrentPage);
-    right.removeEventListener('click', increment);
-    left.removeEventListener('click', decrement);
-    first.removeEventListener('click', skipToFirst);
-    last.removeEventListener('click', skipToLast);
-    pageMinusTwo.addEventListener('click', changeCurrentPageMovies);
-    pageMinusOne.addEventListener('click', changeCurrentPageMovies);
-    pagePlusOne.addEventListener('click', changeCurrentPageMovies);
-    pagePlusTwo.addEventListener('click', changeCurrentPageMovies);
-    right.addEventListener('click', incrementMovies);
-    left.addEventListener('click', decrementMovies);
-    first.addEventListener('click', skipToFirstMovies);
-    last.addEventListener('click', skipToLastMovies);
+    current.textContent = 1;
   }
 });
 
 export { fetchImages };
 
+export { fetchMovies };
