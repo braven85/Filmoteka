@@ -7,6 +7,7 @@ const search = document.querySelector('.header__icon--search');
 const text = document.querySelector('.header__input');
 const noResults = document.querySelector('.header__error');
 const current = document.querySelector('.pagination_current-page');
+const last = document.querySelector('.pagination_last-page');
 
 let IDS;
 
@@ -29,7 +30,8 @@ async function fetchImages(page) {
   }
 }
 
-fetchImages(1);
+fetchImages(1)
+  .then((data) => { last.textContent = data.total_pages; });
 
 async function fetchMovies(name, page) {
   spinner.spin(target);
@@ -91,7 +93,8 @@ function building(resp) {
 
 search.addEventListener('click', () => {
   noResults.style.display = 'none';
-  fetchMovies(text.value, current.textContent);
+  fetchMovies(text.value, current.textContent)
+    .then((data) => { last.textContent = data.total_pages; });
   current.textContent = 1;
 });
 
@@ -99,7 +102,8 @@ text.addEventListener('keyup', (event) => {
   if (event.keyCode === 13) {
     event.preventDefault();
     noResults.style.display = 'none';
-    fetchMovies(text.value, current.textContent);
+    fetchMovies(text.value, current.textContent)
+      .then((data) => { last.textContent = data.total_pages; });
     current.textContent = 1;
   }
 });
