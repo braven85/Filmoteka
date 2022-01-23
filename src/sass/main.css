@@ -993,8 +993,17 @@ body.students-active {
   .pagination_dots {
     margin-top: 8px;
   }
+  .pagination_first-page {
+    visibility: hidden;
+  }
+  .pagination_hider-first {
+    visibility: hidden;
+  }
   .pagination_first-page, .pagination_last-page {
     display: inline-block;
+  }
+  .pagination_less-two, .pagination_less-one {
+    visibility: hidden;
   }
 }
 

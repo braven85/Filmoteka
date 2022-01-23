@@ -19,4 +19,4 @@ async function fetchMovieData(movieId) {
 
 }
 
-export { fetchMovieData };
+// export { fetchMovieData };

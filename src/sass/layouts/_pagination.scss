@@ -66,9 +66,22 @@
       margin-top: 8px;
     }
 
+    &_first-page{
+    visibility: hidden;
+    }
+
+    &_hider-first{
+      visibility: hidden;
+    }
+
     &_first-page,
     &_last-page{
       display: inline-block;
+
+    }
+    &_less-two,
+    &_less-one{
+      visibility: hidden;
     }
 }
 }
