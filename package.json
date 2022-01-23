@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "gallery.js": "^1.0.2",
     "throttle": "^1.0.3"
   }
 }

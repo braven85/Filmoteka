@@ -13,6 +13,7 @@ const last = document.querySelector('.pagination_last-page');
 const right = document.querySelector('.pagination_right');
 const gallery = document.querySelector('.gallery');
 const text = document.querySelector('.header__input');
+const search = document.querySelector('.header__icon--search');
 
 pageMinusTwo.value = -2;
 pageMinusOne.value = -1;
@@ -248,6 +249,27 @@ const decrementMovies = (e) => {
   conditionalHide();
 };
 
+const listenerChanger = (e) => {
+  pageMinusTwo.removeEventListener('click', changeCurrentPage);
+  pageMinusOne.removeEventListener('click', changeCurrentPage);
+  pagePlusOne.removeEventListener('click', changeCurrentPage);
+  pagePlusTwo.removeEventListener('click', changeCurrentPage);
+  right.removeEventListener('click', increment);
+  left.removeEventListener('click', decrement);
+  first.removeEventListener('click', skipToFirst);
+  last.removeEventListener('click', skipToLast);
+  pageMinusTwo.addEventListener('click', changeCurrentPageMovies);
+  pageMinusOne.addEventListener('click', changeCurrentPageMovies);
+  pagePlusOne.addEventListener('click', changeCurrentPageMovies);
+  pagePlusTwo.addEventListener('click', changeCurrentPageMovies);
+  right.addEventListener('click', incrementMovies);
+  left.addEventListener('click', decrementMovies);
+  first.addEventListener('click', skipToFirstMovies);
+  last.addEventListener('click', skipToLastMovies);
+  current.textContent = 1;
+  conditionalHide();
+};
+
 pageMinusTwo.addEventListener('click', changeCurrentPage);
 pageMinusOne.addEventListener('click', changeCurrentPage);
 pagePlusOne.addEventListener('click', changeCurrentPage);
@@ -256,15 +278,7 @@ right.addEventListener('click', increment);
 left.addEventListener('click', decrement);
 first.addEventListener('click', skipToFirst);
 last.addEventListener('click', skipToLast);
-
-export {conditionalHide};
-export {changeCurrentPageMovies};
-export {incrementMovies};
-export {decrementMovies};
-export {skipToFirstMovies};
-export {skipToLastMovies};
-export {changeCurrentPage};
-export {increment};
-export {decrement};
-export {skipToFirst};
-export {skipToLast};
+search.addEventListener('click', listenerChanger);
+text.addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) { listenerChanger; }
+});
