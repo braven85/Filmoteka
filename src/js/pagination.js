@@ -1,4 +1,4 @@
-import { fetchImages, fetchMovies, conditionalHide } from './gallery';
+import { fetchImages, fetchMovies, conditionalHide } from './gallery.js';
 
 // const hidingFirst = document.querySelector('.pagination_hider-first');
 // const hidingLast = document.querySelector('.pagination_hider-last');

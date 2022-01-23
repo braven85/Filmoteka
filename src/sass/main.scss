@@ -1,18 +1,12 @@
 @import './base/common';
 
-// Style dla pliku z przykładem HTML fragmentu
-//@import './example';
 @import './utils/is-hidden';
 @import './utils/variables';
-
-
-@import './modal';
-@import './backdrop';
-
-
-
+@import './utils/modal';
+@import './utils/backdrop';
 @import './utils/container';
 @import './utils/gallery';
+@import './utils/spinner';
 
 @import './layouts/header';
 @import './layouts/library';
@@ -20,7 +14,4 @@
 @import './layouts/footer';
 
 @import './components/card-template';
-
 @import './components/students-modal';
-@import './utils/spinner';
-
