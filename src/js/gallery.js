@@ -71,16 +71,16 @@ const conditionalHide = (e) => {
     pageMinusTwo.disabled = false;
   }
 
-  if (Number(current.textContent) === Number(last.textContent)) {
-    right.disabled = true;
+  if (Number(current.textContent) === Number(last.textContent) - 2) {
+    right.disabled = false;
     last.style.visibility = 'hidden';
     last.disabled = true;
     hidingLast.style.visibility = 'hidden';
     hidingLast.disabled = true;
-    pagePlusOne.style.visibility = 'hidden';
-    pagePlusOne.disabled = true;
-    pagePlusTwo.style.visibility = 'hidden';
-    pagePlusTwo.disabled = true;
+    pagePlusOne.style.visibility = 'visible';
+    pagePlusOne.disabled = false;
+    pagePlusTwo.style.visibility = 'visible';
+    pagePlusTwo.disabled = false;
   } else if (Number(current.textContent) === Number(last.textContent) - 1) {
     right.disabled = false;
     last.style.visibility = 'hidden';
@@ -91,16 +91,16 @@ const conditionalHide = (e) => {
     pagePlusOne.disabled = false;
     pagePlusTwo.style.visibility = 'hidden';
     pagePlusTwo.disabled = true;
-  } else if (Number(current.textContent) === Number(last.textContent) - 2) {
-    right.disabled = false;
+  } else if (Number(current.textContent) === Number(last.textContent)) {
+    right.disabled = true;
     last.style.visibility = 'hidden';
     last.disabled = true;
     hidingLast.style.visibility = 'hidden';
     hidingLast.disabled = true;
-    pagePlusOne.style.visibility = 'visible';
-    pagePlusOne.disabled = false;
-    pagePlusTwo.style.visibility = 'visible';
-    pagePlusTwo.disabled = false;
+    pagePlusOne.style.visibility = 'hidden';
+    pagePlusOne.disabled = true;
+    pagePlusTwo.style.visibility = 'hidden';
+    pagePlusTwo.disabled = true;
   } else {
     right.disabled = false;
     last.style.visibility = 'visible';
