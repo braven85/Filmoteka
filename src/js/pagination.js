@@ -128,7 +128,7 @@ const changeCurrentPage = (e) => {
   console.log(current.textContent);
   galleryRefresh();
   fetchImages(Number(current.textContent))
-    .then((data) => last.textContent = data.total_pages);
+    .then((data) => { last.textContent = data.total_pages; });
 
   conditionalHide();
 };
