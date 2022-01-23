@@ -152,3 +152,6 @@ text.addEventListener('keyup', (event) => {
     last.addEventListener('click', skipToLastMovies);
   }
 });
+
+export { fetchImages };
+
