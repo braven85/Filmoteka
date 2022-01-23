@@ -1,4 +1,4 @@
-import { spinner, target } from "./spinner.js";
+import { spinner, target } from './spinner.js';
 
 const api = {
   baseUrl: 'https://api.themoviedb.org',
@@ -6,17 +6,15 @@ const api = {
 };
 
 async function fetchMovieData(movieId) {
-
   spinner.spin(target);
 
   const response = await fetch(
-    `${api.baseUrl}/3/movie/${movieId}?api_key=${api.apiKey}&language=en-US`
+    `${api.baseUrl}/3/movie/${movieId}?api_key=${api.apiKey}&language=en-US`,
   );
 
   spinner.stop();
 
   return response.json();
-
 }
 
-// export { fetchMovieData };
+export { fetchMovieData };
