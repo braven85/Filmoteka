@@ -186,5 +186,5 @@ first.addEventListener('click', skipToFirst);
 last.addEventListener('click', skipToLast);
 search.addEventListener('click', listenerChanger);
 text.addEventListener('keyup', (event) => {
-  if (event.keyCode === 13) { listenerChanger; }
+  if (event.keyCode === 13) { listenerChanger() }
 });

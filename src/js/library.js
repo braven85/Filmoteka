@@ -9,20 +9,20 @@ list.classList.add('lib-gallery__list');
 
 const imgURL = 'https://image.tmdb.org/t/p/w500/';
 function renderMyOneMovie(movie) {
-    const { id, poster_path, original_title, release_date, genres } = movie;
-    let year;
-    if (year !== '') {
-      year = release_date.slice(0,4);
-    } else {
-      year = '';
-    }
-    let myGenre = genres.map(genre => genre.name).join(', ');
-    list.innerHTML += `
+  const { id, poster_path, original_title, release_date, genres } = movie;
+  let year;
+  if (year !== '') {
+    year = release_date.slice(0, 4);
+  } else {
+    year = '';
+  }
+  let myGenre = genres.map(genre => genre.name).join(', ');
+  list.innerHTML += `
           <li class="lib-gallery__item"><img class="lib-gallery__image" id="${id}" src="${imgURL}${poster_path}" alt="${original_title}" />
             <p class="lib-gallery__title">${original_title}</p>
             <p class="lib-gallery__desc">${myGenre} | ${year}</p>
           </li>`;
-  };
+}
 
 function renderLibMovies(movieId) {
   fetchMovieData(movieId).then(movie => {
@@ -31,6 +31,8 @@ function renderLibMovies(movieId) {
 }
 
 let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+let queue = JSON.parse(localStorage.getItem('queue'));
+
 function getWatched() {
   div.innerHTML = '';
   list.innerHTML = '';
@@ -50,9 +52,9 @@ function getWatched() {
   }
   div.append(list);
 }
+getWatched();
 buttonWatched.addEventListener('click', getWatched);
 
-let queue = JSON.parse(localStorage.getItem('queue'));
 function getQueque() {
   div.innerHTML = '';
   list.innerHTML = '';
@@ -81,17 +83,17 @@ buttonQueue.addEventListener('click', getQueque);
 
 const openModalCard = document.querySelector('[data-modal-open]');
 
-const getModalData = (e) => {
-  let modalData = e.target.closest(".lib-gallery__image");
+const getModalData = e => {
+  let modalData = e.target.closest('.lib-gallery__image');
   let movieId = modalData.getAttribute('id');
   try {
     if (movieId !== null) {
       renderMovieLib(movieId);
     }
   } catch (error) {
-    console.log("Wystąpił błąd przy pobieraniu danych z bazy");
+    console.log('Wystąpił błąd przy pobieraniu danych z bazy');
   }
-}
+};
 
 openModalCard.addEventListener('click', getModalData);
 

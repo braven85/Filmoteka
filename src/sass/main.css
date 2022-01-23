@@ -326,12 +326,6 @@ li {
   margin: 0 auto;
 }
 
-@media screen and (min-width: 480px) {
-  .container {
-    max-width: 480px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
@@ -414,7 +408,6 @@ body.students-active {
   display: -ms-flexbox;
   display: flex;
   margin-left: auto;
-  padding-right: 20px;
   -webkit-box-pack: right;
       -ms-flex-pack: right;
           justify-content: right;
@@ -638,7 +631,7 @@ body.students-active {
   background-repeat: no-repeat;
   background-size: cover;
   padding-right: 20px;
-  padding-left: 21px;
+  padding-left: 20px;
 }
 
 .library__div {
@@ -738,7 +731,7 @@ body.students-active {
 
 .library__button:hover, .library__button:focus {
   cursor: pointer;
-  background: #FF6B01;
+  background: #ff6b01;
   border: transparent;
 }
 
@@ -747,9 +740,13 @@ body.students-active {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_lib_tablet.png);
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_lib_tablet.png);
     height: 230px;
-    padding-left: 71px;
-    padding-right: 70px;
+    padding-left: 0px;
+    padding-right: 0px;
     max-width: 100%;
+  }
+  .library__div {
+    margin-left: 71px;
+    margin-right: 71px;
   }
   .library__name {
     font-family: "Roboto", sans-serif;
@@ -784,10 +781,14 @@ body.students-active {
   .library {
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_lib_desktop.png);
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_lib_desktop.png);
-    padding-left: 71px;
-    padding-right: 71px;
+    padding-left: 0px;
+    padding-right: 0px;
     max-width: 100%;
     min-height: 100%;
+  }
+  .library__div {
+    margin-left: 71px;
+    margin-right: 71px;
   }
 }
 
@@ -804,7 +805,7 @@ body.students-active {
   font-weight: 400;
   font-size: 20px;
   line-height: 1.17;
-  font-family: Roboto,sans-serif;
+  font-family: Roboto, sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
   -webkit-box-align: center;
@@ -813,20 +814,9 @@ body.students-active {
 }
 
 .lib-gallery__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  list-style: none;
-  padding-bottom: 40px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 30px;
+  margin: 20px auto 40px auto;
+  max-width: 280px;
+  grid-row-gap: 30px;
 }
 
 .lib-gallery__image {
@@ -882,6 +872,17 @@ body.students-active {
   }
 }
 
+.lib-gallery__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 280px;
+}
+
 .lib-gallery__desc {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -889,32 +890,85 @@ body.students-active {
   line-height: 16px;
   width: 100%;
   color: #ff6b08;
+  height: 32px;
 }
 
 .lib-gallery__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   text-transform: uppercase;
   color: #000000;
   width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media screen and (min-width: 768px) {
   .lib-gallery__list {
-    padding-top: 40px 75px 50px 75px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 50px auto 60px auto;
+    max-width: 616px;
   }
   .lib-gallery__image {
     width: 294px;
     height: 398px;
   }
+  .lib-gallery__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    max-width: 294px;
+  }
+  .lib-gallery__title {
+    height: 28px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .lib-gallery__list {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 60px auto 50px auto;
+    max-width: 882px;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
   .lib-gallery__image {
     width: 274px;
     height: 398px;
+  }
+  .lib-gallery__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    max-width: 274px;
   }
 }
 
