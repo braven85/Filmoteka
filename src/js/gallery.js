@@ -20,14 +20,14 @@ const right = document.querySelector('.pagination_right');
 
 let IDS;
 
-const pagesCorection = (e) => {
+const pagesCorection = e => {
   pageMinusTwo.textContent = Number(current.textContent) - 2;
   pageMinusOne.textContent = Number(current.textContent) - 1;
   pagePlusOne.textContent = Number(current.textContent) + 1;
   pagePlusTwo.textContent = Number(current.textContent) + 2;
 };
 
-const conditionalHide = (e) => {
+const conditionalHide = e => {
   pagesCorection();
   if (current.textContent === '1') {
     left.disabled = true;
@@ -121,7 +121,7 @@ async function fetchImages(page) {
       'https://api.themoviedb.org/3/genre/movie/list?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&language=en-US',
     );
     const res = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&page=${page}`,
+      `https://api.themoviedb.org/3/trending/movie/week?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&page=${page}`,
     );
     building(res.data.results);
     spinner.stop();
@@ -133,8 +133,9 @@ async function fetchImages(page) {
   }
 }
 
-fetchImages(1)
-  .then((data) => { last.textContent = data.total_pages; });
+fetchImages(1).then(data => {
+  last.textContent = data.total_pages;
+});
 conditionalHide();
 
 async function fetchMovies(name, page) {
@@ -158,12 +159,12 @@ async function fetchMovies(name, page) {
 
 function building(resp) {
   const markup = resp
-    .map((variable) => {
+    .map(variable => {
       let genreName = '';
       let movieName = '';
       let movieDate = '';
 
-      IDS.data.genres.forEach((element) => {
+      IDS.data.genres.forEach(element => {
         const currentID = Object.values(element)[0];
         if (variable.genre_ids.includes(currentID)) {
           genreName += `${Object.values(element)[1]}, `;
@@ -198,22 +199,233 @@ function building(resp) {
 search.addEventListener('click', () => {
   noResults.style.display = 'none';
   fetchMovies(text.value, current.textContent)
-    .then((data) => { last.textContent = data.total_pages; });
+    .then(data => {
+      last.textContent = data.total_pages;
+    })
+    .catch(error => {
+      console.log(error);
+    });
   current.textContent = 1;
   conditionalHide();
 });
 
-text.addEventListener('keyup', (event) => {
+text.addEventListener('keyup', event => {
   if (event.keyCode === 13) {
     event.preventDefault();
     noResults.style.display = 'none';
     fetchMovies(text.value, current.textContent)
-      .then((data) => { last.textContent = data.total_pages; });
+      .then(data => {
+        last.textContent = data.total_pages;
+      })
+      .catch(error => {
+        console.log(error);
+      });
     current.textContent = 1;
     conditionalHide();
   }
 });
 
-export { fetchImages };
-export { conditionalHide };
-export { fetchMovies };
+// export { fetchImages };
+// export { conditionalHide };
+// export { fetchMovies };
+
+// const left = document.querySelector('.pagination_left');
+// const first = document.querySelector('.pagination_first-page');
+// const pageMinusTwo = document.querySelector('.pagination_less-two');
+// const pageMinusOne = document.querySelector('.pagination_less-one');
+// const current = document.querySelector('.pagination_current-page');
+// const pagePlusOne = document.querySelector('.pagination_more-one');
+// const pagePlusTwo = document.querySelector('.pagination_more-two');
+// const last = document.querySelector('.pagination_last-page');
+// const right = document.querySelector('.pagination_right');
+// const gallery = document.querySelector('.gallery');
+// const text = document.querySelector('.header__input');
+// const search = document.querySelector('.header__icon--search');
+
+pageMinusTwo.value = -2;
+pageMinusOne.value = -1;
+pagePlusOne.value = 1;
+pagePlusTwo.value = 2;
+right.value = 1;
+left.value = -1;
+
+const galleryRefresh = e => {
+  gallery.innerHTML = '';
+};
+
+// conditionalHide();
+
+const changeCurrentPage = e => {
+  e.preventDefault();
+  current.textContent = e.currentTarget.textContent;
+  console.log(current.textContent);
+  galleryRefresh();
+  fetchImages(Number(current.textContent))
+    .then(data => {
+      last.textContent = data.total_pages;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+  conditionalHide();
+};
+
+const changeCurrentPageMovies = e => {
+  e.preventDefault();
+  current.textContent = e.currentTarget.textContent;
+  console.log(current.textContent);
+  galleryRefresh();
+  fetchMovies(text.value, Number(current.textContent))
+    .then(data => (last.textContent = data.total_pages))
+    .catch(error => {
+      console.log(error);
+    });
+
+  conditionalHide();
+};
+
+const skipToFirst = e => {
+  e.preventDefault();
+  changeCurrentPage(e);
+  e.currentTarget.style.visibility = 'hidden';
+  e.currentTarget.disabled = true;
+  pageMinusOne.style.visibility = 'hidden';
+  pageMinusOne.disabled = true;
+  pageMinusTwo.style.visibility = 'hidden';
+  pageMinusTwo.disabled = true;
+  conditionalHide();
+};
+
+const skipToFirstMovies = e => {
+  e.preventDefault();
+  changeCurrentPageMovies(e);
+  e.currentTarget.style.visibility = 'hidden';
+  e.currentTarget.disabled = true;
+  pageMinusOne.style.visibility = 'hidden';
+  pageMinusOne.disabled = true;
+  pageMinusTwo.style.visibility = 'hidden';
+  pageMinusTwo.disabled = true;
+  conditionalHide();
+};
+
+const skipToLast = e => {
+  e.preventDefault();
+  changeCurrentPage(e);
+  e.currentTarget.style.visibility = 'hidden';
+  e.currentTarget.disabled = true;
+  pagePlusOne.style.visibility = 'hidden';
+  pagePlusOne.disabled = true;
+  pagePlusTwo.style.visibility = 'hidden';
+  pagePlusTwo.disabled = true;
+  conditionalHide();
+};
+
+const skipToLastMovies = e => {
+  e.preventDefault();
+  changeCurrentPageMovies(e);
+  e.currentTarget.style.visibility = 'hidden';
+  e.currentTarget.disabled = true;
+  pagePlusOne.style.visibility = 'hidden';
+  pagePlusOne.disabled = true;
+  pagePlusTwo.style.visibility = 'hidden';
+  pagePlusTwo.disabled = true;
+  conditionalHide();
+};
+
+const increment = e => {
+  e.preventDefault();
+  current.textContent = Number(current.textContent) + Number(right.value);
+  pageMinusTwo.textContent = Number(pageMinusTwo.textContent) + Number(right.value);
+  pageMinusOne.textContent = Number(pageMinusOne.textContent) + Number(right.value);
+  pagePlusOne.textContent = Number(pagePlusOne.textContent) + Number(right.value);
+  pagePlusTwo.textContent = Number(pagePlusTwo.textContent) + Number(right.value);
+  galleryRefresh();
+  fetchImages(Number(current.textContent)).then(data => (last.textContent = data.total_pages));
+
+  conditionalHide();
+};
+
+const incrementMovies = e => {
+  e.preventDefault();
+  current.textContent = Number(current.textContent) + Number(right.value);
+  pageMinusTwo.textContent = Number(pageMinusTwo.textContent) + Number(right.value);
+  pageMinusOne.textContent = Number(pageMinusOne.textContent) + Number(right.value);
+  pagePlusOne.textContent = Number(pagePlusOne.textContent) + Number(right.value);
+  pagePlusTwo.textContent = Number(pagePlusTwo.textContent) + Number(right.value);
+  galleryRefresh();
+  fetchMovies(text.value, Number(current.textContent))
+    .then(data => (last.textContent = data.total_pages))
+    .catch(error => {
+      console.log(error);
+    });
+
+  conditionalHide();
+};
+
+const decrement = e => {
+  e.preventDefault();
+
+  current.textContent = Number(current.textContent) - Number(right.value);
+  pageMinusTwo.textContent = Number(pageMinusTwo.textContent) - Number(right.value);
+  pageMinusOne.textContent = Number(pageMinusOne.textContent) - Number(right.value);
+  pagePlusOne.textContent = Number(pagePlusOne.textContent) - Number(right.value);
+  pagePlusTwo.textContent = Number(pagePlusTwo.textContent) - Number(right.value);
+  galleryRefresh();
+  fetchImages(Number(current.textContent)).then(data => (last.textContent = data.total_pages));
+
+  conditionalHide();
+};
+
+const decrementMovies = e => {
+  e.preventDefault();
+  current.textContent = Number(current.textContent) - Number(right.value);
+  pageMinusTwo.textContent = Number(pageMinusTwo.textContent) - Number(right.value);
+  pageMinusOne.textContent = Number(pageMinusOne.textContent) - Number(right.value);
+  pagePlusOne.textContent = Number(pagePlusOne.textContent) - Number(right.value);
+  pagePlusTwo.textContent = Number(pagePlusTwo.textContent) - Number(right.value);
+  galleryRefresh();
+  fetchMovies(text.value, Number(current.textContent))
+    .then(data => (last.textContent = data.total_pages))
+    .catch(error => {
+      console.log(error);
+    });
+
+  conditionalHide();
+};
+
+const listenerChanger = e => {
+  pageMinusTwo.removeEventListener('click', changeCurrentPage);
+  pageMinusOne.removeEventListener('click', changeCurrentPage);
+  pagePlusOne.removeEventListener('click', changeCurrentPage);
+  pagePlusTwo.removeEventListener('click', changeCurrentPage);
+  right.removeEventListener('click', increment);
+  left.removeEventListener('click', decrement);
+  first.removeEventListener('click', skipToFirst);
+  last.removeEventListener('click', skipToLast);
+  pageMinusTwo.addEventListener('click', changeCurrentPageMovies);
+  pageMinusOne.addEventListener('click', changeCurrentPageMovies);
+  pagePlusOne.addEventListener('click', changeCurrentPageMovies);
+  pagePlusTwo.addEventListener('click', changeCurrentPageMovies);
+  right.addEventListener('click', incrementMovies);
+  left.addEventListener('click', decrementMovies);
+  first.addEventListener('click', skipToFirstMovies);
+  last.addEventListener('click', skipToLastMovies);
+  current.textContent = 1;
+  conditionalHide();
+};
+
+pageMinusTwo.addEventListener('click', changeCurrentPage);
+pageMinusOne.addEventListener('click', changeCurrentPage);
+pagePlusOne.addEventListener('click', changeCurrentPage);
+pagePlusTwo.addEventListener('click', changeCurrentPage);
+right.addEventListener('click', increment);
+left.addEventListener('click', decrement);
+first.addEventListener('click', skipToFirst);
+last.addEventListener('click', skipToLast);
+search.addEventListener('click', listenerChanger);
+text.addEventListener('keyup', event => {
+  if (event.keyCode === 13) {
+    listenerChanger();
+  }
+});
