@@ -157,6 +157,28 @@ async function fetchMovies(name, page) {
   }
 }
 
+
+async function fetchMoviesByName(name) {
+  spinner.spin(target);
+  try {
+    const res = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=130c7a7ecd86dbb286ae26c3cdcca88c&query=${name}`,
+    );
+    if (res.data.results.length === 0) {
+      return (noResults.style.display = 'flex');
+    }
+    gallery.innerHTML = '';
+    building(res.data.results);
+    spinner.stop();
+    return res.data;
+  } catch (error) {
+    spinner.stop();
+    return (noResults.style.display = 'flex');
+  }
+}
+
+
+
 function building(resp) {
   const markup = resp
     .map(variable => {
@@ -196,9 +218,10 @@ function building(resp) {
   gallery.innerHTML += markup;
 }
 
+// wyszukiwanie filmów po kliknięciu ikonki lupki
 search.addEventListener('click', () => {
   noResults.style.display = 'none';
-  fetchMovies(text.value, current.textContent)
+  fetchMoviesByName(text.value)
     .then(data => {
       last.textContent = data.total_pages;
     })
@@ -209,11 +232,11 @@ search.addEventListener('click', () => {
   conditionalHide();
 });
 
+// wyszukiwanie filmów po zwolnieniu klawisza enter
 text.addEventListener('keyup', event => {
   if (event.keyCode === 13) {
-    event.preventDefault();
     noResults.style.display = 'none';
-    fetchMovies(text.value, current.textContent)
+    fetchMoviesByName(text.value)
       .then(data => {
         last.textContent = data.total_pages;
       })
