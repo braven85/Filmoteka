@@ -1,19 +1,32 @@
-import { fetchImages, fetchMovies, conditionalHide } from './gallery.js';
+import {conditionalHide} from './gallery';
+import { getWatched, getQueque } from './library';
 
-// const hidingFirst = document.querySelector('.pagination_hider-first');
-// const hidingLast = document.querySelector('.pagination_hider-last');
+const gallery = document.querySelector('.gallery');
+const search = document.querySelector('.header__icon--search');
+const text = document.querySelector('.header__input');
+const noResults = document.querySelector('.header__error');
+const current = document.querySelector('.pagination_current-page');
+const last = document.querySelector('.pagination_last-page');
+const hidingFirst = document.querySelector('.pagination_hider-first');
+const hidingLast = document.querySelector('.pagination_hider-last');
 const left = document.querySelector('.pagination_left');
 const first = document.querySelector('.pagination_first-page');
 const pageMinusTwo = document.querySelector('.pagination_less-two');
 const pageMinusOne = document.querySelector('.pagination_less-one');
-const current = document.querySelector('.pagination_current-page');
 const pagePlusOne = document.querySelector('.pagination_more-one');
 const pagePlusTwo = document.querySelector('.pagination_more-two');
-const last = document.querySelector('.pagination_last-page');
 const right = document.querySelector('.pagination_right');
-const gallery = document.querySelector('.gallery');
-const text = document.querySelector('.header__input');
-const search = document.querySelector('.header__icon--search');
+const buttonWatched = document.querySelector('#btn-watched');
+const buttonQueue = document.querySelector('#btn-queue');
+const info = document.querySelector('.start-info');
+const div = document.querySelector('.start');
+const list = document.createElement('ul');
+const watchedCountArray=JSON.parse(localStorage.getItem('watchedMovie'));
+const pageNumberWatched=Math.ceil(watchedCountArray.length/20);
+const queueCountArray=JSON.parse(localStorage.getItem('queue'));
+const pageNumberQueue=Math.ceil(queueCountArray.length/20);
+const currentPageWatched=watchedCountArray.slice(Number(current.textContent)*20-20,Number(current.textContent)*20);
+const currentPageQueue=queueCountArray.slice(Number(current.textContent)*20-20,Number(current.textContent)*20);
 
 pageMinusTwo.value = -2;
 pageMinusOne.value = -1;
@@ -22,8 +35,9 @@ pagePlusTwo.value = 2;
 right.value = 1;
 left.value = -1;
 
+
 const galleryRefresh = (e) => {
-  gallery.innerHTML = '';
+  list.innerHTML = '';
 };
 
 conditionalHide();
@@ -33,10 +47,9 @@ const changeCurrentPage = (e) => {
   current.textContent = e.currentTarget.textContent;
   console.log(current.textContent);
   galleryRefresh();
-  fetchImages(Number(current.textContent))
-    .then((data) => { last.textContent = data.total_pages; });
-
+  getWatched();
   conditionalHide();
+  last.textContent=pageNumberWatched
 };
 
 const changeCurrentPageMovies = (e) => {
@@ -44,10 +57,9 @@ const changeCurrentPageMovies = (e) => {
   current.textContent = e.currentTarget.textContent;
   console.log(current.textContent);
   galleryRefresh();
-  fetchMovies(text.value, Number(current.textContent))
-    .then((data) => last.textContent = data.total_pages);
-
+  getQueque();
   conditionalHide();
+  last.pageNumberQueue
 };
 
 const skipToFirst = (e) => {
@@ -155,6 +167,26 @@ const decrementMovies = (e) => {
   conditionalHide();
 };
 
+const listenerChangerRev = (e) => {
+  pageMinusTwo.addEventListener('click', changeCurrentPage);
+  pageMinusOne.addEventListener('click', changeCurrentPage);
+  pagePlusOne.addEventListener('click', changeCurrentPage);
+  pagePlusTwo.addEventListener('click', changeCurrentPage);
+  right.addEventListener('click', increment);
+  left.addEventListener('click', decrement);
+  first.addEventListener('click', skipToFirst);
+  last.addEventListener('click', skipToLast);
+  pageMinusTwo.removeEventListener('click', changeCurrentPageMovies);
+  pageMinusOne.removeEventListener('click', changeCurrentPageMovies);
+  pagePlusOne.removeEventListener('click', changeCurrentPageMovies);
+  pagePlusTwo.removeEventListener('click', changeCurrentPageMovies);
+  right.removeEventListener('click', incrementMovies);
+  left.removeEventListener('click', decrementMovies);
+  first.removeEventListener('click', skipToFirstMovies);
+  last.removeEventListener('click', skipToLastMovies);
+  current.textContent = 1;
+  conditionalHide();
+};
 const listenerChanger = (e) => {
   pageMinusTwo.removeEventListener('click', changeCurrentPage);
   pageMinusOne.removeEventListener('click', changeCurrentPage);
@@ -184,7 +216,5 @@ right.addEventListener('click', increment);
 left.addEventListener('click', decrement);
 first.addEventListener('click', skipToFirst);
 last.addEventListener('click', skipToLast);
-search.addEventListener('click', listenerChanger);
-text.addEventListener('keyup', (event) => {
-  if (event.keyCode === 13) { listenerChanger() }
-});
+buttonQueue.addEventListener('click', listenerChanger);
+buttonWatched.addEventListener('click', listenerChangerRev);

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../sass/main.css">
+  <link rel="stylesheet" href="./sass/main.css">
 </head>
 
 <body>
@@ -23,14 +23,14 @@
             <div class="library__div">
         <h2 class="library__name">
           <svg class="library__icon" width="24" height="24" alt="film">
-            <use href="../images/film.svg#icon-film"></use>
+            <use href="./images/film.svg#icon-film"></use>
           </svg>
           Filmoteka
         </h2>
         <naw class="library__navigation">
           <ul class="library__navigation-list">
             <li class="library__navigation-item">
-              <a class="library__navigation-link" href="../index.html">Home</a>
+              <a class="library__navigation-link" href="./index.html">Home</a>
             </li>
             <li class="library__navigation-item library__navigation-item--lastchild">
               <a class="library__navigation-link" href="./library.html">my library</a>
@@ -56,6 +56,7 @@
     <div class="test-spinner"></div>
 
 
+    <include src="./partials/pagination.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal-lib.html"></include>
 
@@ -70,23 +71,23 @@
         <h2>Studenci GoIT:</h2>
         <div class="students-list">
           <div class="students-list__item">
-            <img class="students-picture" src="../images/icons/publicdomainq-worker.svg" alt="">
+            <img class="students-picture" src="./images/icons/publicdomainq-worker.svg" alt="">
             <div class="students-name">Roksana</div>
           </div>
           <div class="students-list__item">
-            <img class="students-picture" src="../images/icons/publicdomainq-user.svg" alt="">
+            <img class="students-picture" src="./images/icons/publicdomainq-user.svg" alt="">
             <div class="students-name">Monika</div>
           </div>
           <div class="students-list__item">
-            <img class="students-picture" src="../images/icons/exhausted_computer_user.svg" alt="">
+            <img class="students-picture" src="./images/icons/exhausted_computer_user.svg" alt="">
             <div class="students-name">Wojtek</div>
           </div>
           <div class="students-list__item">
-            <img class="students-picture" src="../images/icons/exhausted_computer_user2.svg" alt="">
+            <img class="students-picture" src="./images/icons/exhausted_computer_user2.svg" alt="">
             <div class="students-name">Michał</div>
           </div>
           <div class="students-list__item">
-            <img class="students-picture" src="../images/icons/sleeping_user.svg" alt="">
+            <img class="students-picture" src="./images/icons/sleeping_user.svg" alt="">
             <div class="students-name">Radek</div>
           </div>
         </d>
@@ -94,10 +95,11 @@
     </div>
   </div>
 
-  <script src="../js/students-modal.js"></script>
-  <script src="../js/library.js"></script>
-  <script src="../js/modal.js"></script>
-  <script src="../index.js"></script>
+  <script src="./js/students-modal.js"></script>
+  <script src='./js/paginationLib.js'></script>
+  <script src="./js/library.js"></script>
+  <script src="./js/modal.js"></script>
+  <script src="./index.js"></script>
 </body>
 
 </html>

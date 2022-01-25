@@ -6,6 +6,14 @@ const info = document.querySelector('.start-info');
 const div = document.querySelector('.start');
 const list = document.createElement('ul');
 list.classList.add('lib-gallery__list');
+const current = document.querySelector('.pagination_current-page');
+const watchedCountArray=JSON.parse(localStorage.getItem('watchedMovie'));
+const pageNumberWatched=Math.ceil(watchedCountArray.length/20);
+const queueCountArray=JSON.parse(localStorage.getItem('queue'));
+const pageNumberQueue=Math.ceil(queueCountArray.length/20);
+const currentPageWatched=watchedCountArray.slice(Number(current.textContent)*20-20,Number(current.textContent)*20);
+const currentPageQueue=queueCountArray.slice(Number(current.textContent)*20-20,Number(current.textContent)*20);
+
 
 const imgURL = 'https://image.tmdb.org/t/p/w500/';
 function renderMyOneMovie(movie) {
@@ -30,8 +38,8 @@ function renderLibMovies(movieId) {
   });
 }
 
-let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
-let queue = JSON.parse(localStorage.getItem('queue'));
+// let watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+// let queue = JSON.parse(localStorage.getItem('queue'));
 
 function getWatched() {
   div.innerHTML = '';
@@ -42,10 +50,10 @@ function getWatched() {
   buttonQueue.style.background = 'transparent';
   buttonQueue.style.border = '1px solid #FFF';
   buttonQueue.addEventListener('click', getQueque);
-  if (watchedMovie === null) {
+  if (watchedCountArray === null) {
     div.innerHTML = `<p class="start-info">EMPTY!</p>`;
   } else {
-    for (let movie of watchedMovie) {
+    for (let movie of currentPageWatched) {
       info.remove();
       renderLibMovies(movie.ID);
     }
@@ -64,10 +72,10 @@ function getQueque() {
   buttonWatched.style.background = 'transparent';
   buttonWatched.style.border = '1px solid #FFF';
   buttonWatched.addEventListener('click', getWatched);
-  if (queue === null) {
+  if (queueCountArray === null) {
     div.innerHTML = `<p class="start-info">EMPTY!</p>`;
   } else {
-    for (let movie of queue) {
+    for (let movie of queueCountArray) {
       info.remove();
       list.innerHTML = '';
       renderLibMovies(movie.ID);
@@ -164,9 +172,9 @@ const watchedBtn = document.querySelector('.watched');
 const queueBtn = document.querySelector('.queue');
 
 function buttonColorsWatched(movieId) {
-  watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
-  if (watchedMovie == null) watchedMovie = [];
-  for (let movie of watchedMovie) {
+  // watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  if (watchedCountArray == null) watchedCountArray = [];
+  for (let movie of currentPageWatched) {
     if (movieId == movie.ID) {
       watchedBtn.style.backgroundColor = '#ff6b01';
       watchedBtn.style.color = 'white';
@@ -183,9 +191,9 @@ function buttonColorsWatched(movieId) {
 }
 
 function buttonColorsQueue(movieId) {
-  queue = JSON.parse(localStorage.getItem('queue'));
-  if (queue == null) queue = [];
-  for (let movie of queue) {
+  // queue = JSON.parse(localStorage.getItem('queue'));
+  if (queueCountArray == null) queueCountArray = [];
+  for (let movie of currentPageQueue) {
     if (movieId == movie.ID) {
       queueBtn.style.backgroundColor = '#ff6b01';
       queueBtn.style.color = 'white';
@@ -202,13 +210,13 @@ function buttonColorsQueue(movieId) {
 }
 
 function addToWatched() {
-  watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
-  if (watchedMovie == null) watchedMovie = [];
+  // watchedMovie = JSON.parse(localStorage.getItem('watchedMovie'));
+  if (watchedCountArray == null) watchedCountArray = [];
 
   let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
   let newMovie = { movieTitle: movieData.title, ID: movieData.id };
 
-  for (let movie of watchedMovie) {
+  for (let movie of watchedCountArray) {
     if (movie.ID == newMovie.ID) {
       newMovie = '';
       break;
@@ -216,13 +224,13 @@ function addToWatched() {
   }
 
   if (newMovie === '') {
-    for (let movie of watchedMovie) {
+    for (let movie of watchedCountArray) {
       if (movie.ID == movieTitleForConsole.ID) {
-        let movieIndex = watchedMovie.indexOf(movie);
-        watchedMovie.splice(movieIndex, 1);
-        localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+        let movieIndex = watchedCountArray.indexOf(movie);
+        watchedCountArray.splice(movieIndex, 1);
+        localStorage.setItem('watchedMovie', JSON.stringify(watchedCountArray));
         buttonColorsWatched(movie.ID);
-        if (watchedMovie.length == 0) {
+        if (watchedCountArray.length == 0) {
           watchedBtn.style.backgroundColor = '#FFFFFF';
           watchedBtn.style.color = 'black';
           watchedBtn.style.border = '1px solid black';
@@ -233,21 +241,22 @@ function addToWatched() {
       }
     }
   } else {
-    watchedMovie.push(newMovie);
-    localStorage.setItem('watchedMovie', JSON.stringify(watchedMovie));
+    watchedCountArray.push(newMovie);
+    localStorage.setItem('watchedMovie', JSON.stringify(watchedCountArray));
     buttonColorsWatched(newMovie.ID);
     getWatched();
   }
+  
 }
 
 function addToQueue() {
-  queue = JSON.parse(localStorage.getItem('queue'));
-  if (queue == null) queue = [];
+  // queue = JSON.parse(localStorage.getItem('queue'));
+  if (queueCountArray == null) queueCountArray = [];
 
   let movieTitleForConsole = { movieTitle: movieData.title, ID: movieData.id };
   let newMovie = { movieTitle: movieData.title, ID: movieData.id };
 
-  for (let movie of queue) {
+  for (let movie of queueCountArray) {
     if (movie.ID == newMovie.ID) {
       newMovie = '';
       break;
@@ -255,13 +264,13 @@ function addToQueue() {
   }
 
   if (newMovie === '') {
-    for (let movie of queue) {
+    for (let movie of queueCountArray) {
       if (movie.ID == movieTitleForConsole.ID) {
-        let movieIndex = queue.indexOf(movie);
-        queue.splice(movieIndex, 1);
-        localStorage.setItem('queue', JSON.stringify(queue));
+        let movieIndex = queueCountArray.indexOf(movie);
+        queueCountArray.splice(movieIndex, 1);
+        localStorage.setItem('queue', JSON.stringify(queueCountArray));
         buttonColorsQueue(movie.ID);
-        if (queue.length == 0) {
+        if (queueCountArray.length == 0) {
           queueBtn.style.backgroundColor = '#FFFFFF';
           queueBtn.style.color = 'black';
           queueBtn.style.border = '1px solid black';
@@ -272,8 +281,8 @@ function addToQueue() {
       }
     }
   } else {
-    queue.push(newMovie);
-    localStorage.setItem('queue', JSON.stringify(queue));
+    queueCountArray.push(newMovie);
+    localStorage.setItem('queue', JSON.stringify(queueCountArray));
     buttonColorsQueue(newMovie.ID);
     getQueque();
   }
@@ -282,3 +291,6 @@ function addToQueue() {
 watchedBtn.addEventListener('click', addToWatched);
 
 queueBtn.addEventListener('click', addToQueue);
+
+export {getWatched};
+export {getQueque};
