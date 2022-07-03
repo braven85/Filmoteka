@@ -5,4 +5,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./spin.js":"zrxi"}],"oS62":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.fetchMovieData=a;var e=require("./spinner.js");const t={baseUrl:"https://api.themoviedb.org",apiKey:"130c7a7ecd86dbb286ae26c3cdcca88c"};async function a(a){e.spinner.spin(e.target);const s=await fetch(`${t.baseUrl}/3/movie/${a}?api_key=${t.apiKey}&language=en-US`);return e.spinner.stop(),s.json()}
 },{"./spinner.js":"Sc1o"}]},{},["oS62"], null)
-//# sourceMappingURL=/GoIT-JS-Project-Filmoteka/fetchMovie.48b460f3.js.map
+//# sourceMappingURL=/Filmoteka/fetchMovie.48b460f3.js.map
