@@ -109,3 +109,5 @@ dist
 .tern-port
 
 firebase-adminsdk.json
+# Local Netlify folder
+.netlify
